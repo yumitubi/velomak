@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+
+    {% block body %}
+
+<table align="center" width="1010" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
+  <tr>
+    <td id="posts" width="800px">
+
+      {% for i in header_list %}
+      <a class="header" href="http://127.0.0.1:8000/{{ i.id }}/"><h3>{{ i.header }}</h3></a>      
+      <p > {{ i.prepost }}</p>
+      <p>{{ i.date_pub }}</p>
+      <p>{{ i.tags }}</p>
+      <p>{{ i.id }}</p>
+      {% endfor  %}
+
+    </td>
+    <td id="left_menu" width="210px">
+    <p >Тестовый текст</p>
+    <p >Тестовый текст</p>
+    <p>Тестовый текст</p>
+    <p>Тестовый текст</p>
+    <p>Тестовый текст</p>
+    <p>Тестовый текст</p>
+    <p>Тестовый текст</p>
+    <p>Тестовый текст</p>
+    <p>Тестовый текст</p>
+    <p>Тестовый текст</p>
+    <p>Тестовый текст</p>
+    </td>
+  </tr>
+</table>
+
+    {% endblock%}
+    {% block bottom %}
+
+<table align="center" width="1010" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
+  <tr>
+    <td height="40"></td>
+  </tr>
+</table>
+
+    {% endblock%}
