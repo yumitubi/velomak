@@ -29,10 +29,28 @@ def cur_post(request, offset):
     except:
         pass
     post = Posts()
+    tags_obr = post.get_tag_to_post(offset)
     header_post = post.get_post(current_page)
     return render_to_response('post.html', {'current_page':current_page,
-                                             'header_post':header_post})
+                                             'header_post':header_post,
+                                             'tags_obr':tags_obr})
 
+def cur_tag(request, offset):
+    """Отображает список материалов по выбранному тегу
+    
+    Arguments:
+    - `request`:
+    - `offset`:
+    """
+    current_page = u'Материалы по Тегу: ' + offset
+    posts = Posts()
+    header_list = posts.get_posts_tag(offset)
+    tags_obr = posts.get_tags()
+    return render_to_response('titul.html', {'current_page':current_page,
+                                             'header_list':header_list,
+                                             'tags_obr':tags_obr})
+
+    
 def about(request):
     """Возвращает страницу About
     """

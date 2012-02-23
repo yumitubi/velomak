@@ -6,11 +6,14 @@
   <tr>
     <td id="posts" width="800px">
 
-      <p>{{ header_post.header }}</p>
+      <p> <a class="header" href="http://127.0.0.1:8000/{{ header_post.id }}/"><h3>{{ header_post.header }}</h3></a></p>
       <p>{{ header_post.prepost }}</p>
       <p>{{ header_post.post }}</p>
       <p>{{ header_post.date_pub }}</p>
-      <p>{{ header_post.tags }}</p>      
+      <p>{% for i in tags_obr%}
+	      <a href="http://127.0.0.1:8000/tags/{{ i }}/"> {{ i }}, </a> 
+	 {% endfor %}
+      </p>      
 
     </td>
     <td id="left_menu" width="210px">

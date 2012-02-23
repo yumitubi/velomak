@@ -31,6 +31,20 @@ class Posts(models.Model):
         tags = Posts.objects.all()
         list_tags = [[t.id, t.tags.split(',')] for t in tags]
         return list_tags
+
+    def get_posts_tag(self, url_tag):
+        """return posts from one tag
+        """
+        return Posts.objects.filter(tags__contains=url_tag)
+
+    def get_tag_to_post(self, id_post):
+        """return tags for one post
+        """
+        tags = Posts.objects.get(id=id_post)
+        list_tags = tags.tags.split(',')
+        # assert False
+        return list_tags
+    
     
     class Meta:
         ordering = ["-date_pub"]

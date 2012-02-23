@@ -13,8 +13,7 @@
       <p>{% for n in tags_obr %}
 	 {% if n.0 == i.id %}
 	       {% for p in n.1 %}
-	       {{ p }}, 
-	
+	        <a href="http://127.0.0.1:8000/tags/{{ p }}/"> {{ p }}, </a> 
 	       {% endfor %}
 	 {% endif%}
 	 {% endfor %}
