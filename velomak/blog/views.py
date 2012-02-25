@@ -42,13 +42,18 @@ def cur_tag(request, offset):
     - `request`:
     - `offset`:
     """
-    current_page = u'Материалы по Тегу: ' + offset
+    current_page = u'Материалы по тегу: ' + offset
+    offset_without_earth = offset.replace('_', ' ')
     posts = Posts()
-    header_list = posts.get_posts_tag(offset)
+    header_list = posts.get_posts_tag(offset_without_earth)
     tags_obr = posts.get_tags()
-    return render_to_response('titul.html', {'current_page':current_page,
-                                             'header_list':header_list,
-                                             'tags_obr':tags_obr})
+    if header_list:
+        return render_to_response('titul.html', {'current_page':current_page,
+                                                 'header_list':header_list,
+                                                 'tags_obr':tags_obr})
+    else:
+        current_page = "Об авторе"
+        return render_to_response('about.html', {'current_page':current_page})
 
     
 def about(request):

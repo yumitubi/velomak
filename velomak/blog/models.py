@@ -44,7 +44,7 @@ class Posts(models.Model):
         list_tags = tags.tags.split(',')
         # assert False
         return list_tags
-    
+
     
     class Meta:
         ordering = ["-date_pub"]

@@ -1,5 +1,5 @@
 {% extends "main.html" %}
-
+{% load space_in_earth %}
     {% block body %}
 
 <table align="center" width="1010" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
@@ -10,13 +10,13 @@
       <p > {{ i.prepost }}</p>
       <p>{{ i.date_pub }}</p>
 
-      <p>{% for n in tags_obr %}
-	 {% if n.0 == i.id %}
+      <p> {% for n in tags_obr %}
+	  {% if n.0 == i.id %}
 	       {% for p in n.1 %}
-	        <a href="http://127.0.0.1:8000/tags/{{ p }}/"> {{ p }}, </a> 
+	         <a href="http://127.0.0.1:8000/tags/{{ p|inearth }}/">{{ p }}, </a>  
 	       {% endfor %}
-	 {% endif%}
-	 {% endfor %}
+	  {% endif%}
+	  {% endfor %}
       </p>
 
       <p>{{ i.id }}</p>

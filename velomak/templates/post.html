@@ -1,5 +1,5 @@
 {% extends "main.html" %}
-
+{% load space_in_earth %}
     {% block body %}
 
 <table align="center" width="1010" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
@@ -11,7 +11,7 @@
       <p>{{ header_post.post }}</p>
       <p>{{ header_post.date_pub }}</p>
       <p>{% for i in tags_obr%}
-	      <a href="http://127.0.0.1:8000/tags/{{ i }}/"> {{ i }}, </a> 
+	      <a href="http://127.0.0.1:8000/tags/{{ i|inearth }}/"> {{ i }}, </a> 
 	 {% endfor %}
       </p>      
 
