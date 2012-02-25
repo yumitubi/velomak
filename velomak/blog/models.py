@@ -5,12 +5,25 @@ from django.db import models
 # from tagging.fields import TagField
 # from tagging.models import Tag
 
+class Category(models.Model):
+    categ = models.TextField( blank=True, null=True )
+
+    def __unicode__(self):
+        return self.categ
+
+    def get_categories(self):
+        """return categories
+        """
+        tags = Category.objects.all()
+        return set([t.categ for t in tags])
+
 class Posts(models.Model):
     header = models.TextField( blank = True )
     post = models.TextField( blank = True )
     prepost = models.TextField( blank = True )
     date_pub = models.DateField( auto_now_add = True)
-    tags = models.TextField( True )
+    tags = models.TextField( blank=True )
+    categories = models.ForeignKey(Category)
 
     def __unicode__(self):
         return self.header
@@ -44,14 +57,10 @@ class Posts(models.Model):
         list_tags = tags.tags.split(',')
         # assert False
         return list_tags
-
     
     class Meta:
         ordering = ["-date_pub"]
 
-class Category(models.Model):
-    category = models.TextField( blank = True )
-    id_post = models.IntegerField( default=0 )
 
 class Comments(models.Model):
     autor = models.CharField(max_length=100)

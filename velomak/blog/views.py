@@ -11,11 +11,14 @@ def blog(request):
     """
     current_page = "Главная страница"
     posts = Posts()
+    categ = Category()
     header_list = posts.get_posts()
     tags_obr = posts.get_tags()
+    categories = categ.get_categories()
     return render_to_response('titul.html', {'current_page':current_page,
                                              'header_list':header_list,
-                                             'tags_obr':tags_obr})
+                                             'tags_obr':tags_obr,
+                                             'categories':categories})
 
 def cur_post(request, offset):
     """Отображает один пост по URL
