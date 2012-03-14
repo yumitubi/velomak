@@ -41,3 +41,9 @@ a {
 .header {
     text-align: center;
 }
+
+#left_menu{
+    vertical-align: top;
+    text-align: left;
+    padding-left: 15px;
+}

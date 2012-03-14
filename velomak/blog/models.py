@@ -57,6 +57,16 @@ class Posts(models.Model):
         list_tags = tags.tags.split(',')
         # assert False
         return list_tags
+
+    def get_categ_to_post(self, id_categ):
+        """return posts fron id_categ
+        Arguments:
+        - `self`:
+        - `id_categ`: id category
+        """
+        return Posts.objects.filter(categories = id_categ)
+        
+
     
     class Meta:
         ordering = ["-date_pub"]

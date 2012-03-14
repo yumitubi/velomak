@@ -37,7 +37,8 @@ def cur_post(request, offset):
     header_post = post.get_post(current_page)
     return render_to_response('post.html', {'current_page':current_page,
                                              'header_post':header_post,
-                                             'tags_obr':tags_obr})
+                                             'tags_obr':tags_obr},
+                               context_instance = RequestContext(request))
 
 def cur_tag(request, offset):
     """Отображает список материалов по выбранному тегу
@@ -54,15 +55,18 @@ def cur_tag(request, offset):
     if header_list:
         return render_to_response('titul.html', {'current_page':current_page,
                                                  'header_list':header_list,
-                                                 'tags_obr':tags_obr})
+                                                 'tags_obr':tags_obr},
+                               context_instance = RequestContext(request))
     else:
         current_page = "Об авторе"
-        return render_to_response('about.html', {'current_page':current_page})
+        return render_to_response('about.html', {'current_page':current_page},
+                               context_instance = RequestContext(request))
 
     
 def about(request):
     """Возвращает страницу About
     """
     current_page = "Об авторе"
-    return render_to_response('about.html', {'current_page':current_page})
+    return render_to_response('about.html', {'current_page':current_page},
+                               context_instance = RequestContext(request))
     
