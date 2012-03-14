@@ -5,7 +5,7 @@
 <table align="center" width="1010" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
   <tr>
     <td id="posts" width="800px">
-
+     {% autoescape off %}
       <p> <a class="header" href="http://127.0.0.1:8000/{{ header_post.id }}/"><h3>{{ header_post.header }}</h3></a></p>
       <p>{{ header_post.prepost }}</p>
       <p>{{ header_post.post }}</p>
@@ -14,7 +14,7 @@
 	      <a href="http://127.0.0.1:8000/tags/{{ i|inearth }}/"> {{ i }}, </a> 
 	 {% endfor %}
       </p>      
-
+     {% endautoescape %}
     </td>
     <td id="left_menu" width="210px">
     <p >Тестовый текст</p>
