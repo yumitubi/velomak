@@ -14,11 +14,14 @@ def blog(request):
     categ = Category()
     header_list = posts.get_posts()
     tags_obr = posts.get_tags()
+    categ_obr = posts.get_categs()
     categories = categ.get_categories()
+    assert False
     return render_to_response('titul.html', {'current_page':current_page,
                                              'header_list':header_list,
                                              'tags_obr':tags_obr,
-                                             'categories':categories},
+                                             'categories':categories,
+                                             'categ_obr':categ_obr},
                                context_instance = RequestContext(request))
 
 def cur_post(request, offset):
@@ -61,6 +64,32 @@ def cur_tag(request, offset):
         current_page = "Об авторе"
         return render_to_response('about.html', {'current_page':current_page},
                                context_instance = RequestContext(request))
+
+def cur_categ(request, offset):
+    """Отображает материалы по текущей категории
+    
+    Arguments:
+    - `request`:
+    - `offset`:
+    """
+    current_page = u'Материалы по категории: ' + offset
+    offset_without_earth = offset.replace('_', ' ')
+    posts = Posts()
+    header_list = posts.get_posts_categ(offset_without_earth)
+    categ_obr = posts.get_categories()
+    tag_obr = posts.get_tags()
+    if header_list:
+        return render_to_response('titul.html', {'current_page':current_page,
+                                                 'header_list':header_list,
+                                                 'categ_obr':categ_obr,
+                                                 'tag_obr':tag_obr},
+                               context_instance = RequestContext(request))
+    else:
+        current_page = "Об авторе"
+        return render_to_response('about.html', {'current_page':current_page},
+                               context_instance = RequestContext(request))
+    
+
 
     
 def about(request):

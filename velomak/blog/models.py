@@ -39,7 +39,7 @@ class Posts(models.Model):
         return Posts.objects.get(id = url_post)
 
     def get_tags(self):
-        """return tags
+        """return tags list
         """
         tags = Posts.objects.all()
         list_tags = [[t.id, t.tags.split(',')] for t in tags]
@@ -58,14 +58,20 @@ class Posts(models.Model):
         # assert False
         return list_tags
 
-    def get_categ_to_post(self, id_categ):
+    def get_posts_categ(self, id_categ):
         """return posts fron id_categ
         Arguments:
         - `self`:
         - `id_categ`: id category
         """
         return Posts.objects.filter(categories = id_categ)
-        
+
+    def get_categs(self):
+        """return categories list
+        """
+        categs = Posts.objects.all()
+        list_categs = [[t.id, t.categories] for t in categs]
+        return list_categs
 
     
     class Meta:
