@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse, Http404
 from django.http import HttpResponseRedirect
-from django.template import Template, Context
+from django.template import RequestContext, Template, Context 
 from django.shortcuts import render_to_response
 from velomak.blog.models import Posts, Category, Comments
 
@@ -18,7 +18,8 @@ def blog(request):
     return render_to_response('titul.html', {'current_page':current_page,
                                              'header_list':header_list,
                                              'tags_obr':tags_obr,
-                                             'categories':categories})
+                                             'categories':categories},
+                               context_instance = RequestContext(request))
 
 def cur_post(request, offset):
     """Отображает один пост по URL

@@ -1,10 +1,12 @@
 {% extends "main.html" %}
+{% load pagination_tags %}
 {% load space_in_earth %}
     {% block body %}
 
 <table align="center" width="1010" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
   <tr>
     <td id="posts" width="800px">
+      {% autopaginate header_list 5 %}
       {% for i in header_list %}
       <a class="header" href="http://127.0.0.1:8000/{{ i.id }}/"><h3>{{ i.header }}</h3></a>      
       <p > {{ i.prepost }}</p>
@@ -21,17 +23,20 @@
 
       <p>{{ i.id }}</p>
       {% endfor  %}
-
+      {% paginate %}
     </td>
     <td id="left_menu" width="210px">
       {% for i in categories %}
          <p>{{ i }}</p>
       {% endfor %}
+
     </td>
   </tr>
 </table>
 
     {% endblock%}
+
+
     {% block bottom %}
 
 <table align="center" width="1010" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
