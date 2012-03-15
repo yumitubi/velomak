@@ -14,13 +14,13 @@ def blog(request):
     categ = Category()
     header_list = posts.get_posts()
     tags_obr = posts.get_tags()
-    categ_obr = posts.get_categs()
-    categories = categ.get_categories()
-    assert False
+    categ_obr = categ.get_categs()
+    # categories = categ.get_categories()
+    # assert False
     return render_to_response('titul.html', {'current_page':current_page,
                                              'header_list':header_list,
                                              'tags_obr':tags_obr,
-                                             'categories':categories,
+                                             # 'categories':categories,
                                              'categ_obr':categ_obr},
                                context_instance = RequestContext(request))
 
@@ -75,8 +75,9 @@ def cur_categ(request, offset):
     current_page = u'Материалы по категории: ' + offset
     offset_without_earth = offset.replace('_', ' ')
     posts = Posts()
+    categ = Category()
     header_list = posts.get_posts_categ(offset_without_earth)
-    categ_obr = posts.get_categories()
+    categ_obr = categ.get_categs()
     tag_obr = posts.get_tags()
     if header_list:
         return render_to_response('titul.html', {'current_page':current_page,

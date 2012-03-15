@@ -28,8 +28,8 @@
      {% endautoescape %}
     </td>
     <td id="left_menu" width="210px">
-      {% for i in categories %}
-         <p>{{ i }}</p>
+      {% for i in categ_obr %}
+         <p><a href="http://127.0.0.1:8000/categories/{{ i|inearth }}">{{ i }}</a></p>
       {% endfor %}
 
     </td>

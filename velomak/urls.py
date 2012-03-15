@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     ('^about/$', about),
     ('^(\d+)/$', cur_post),
     ('^tags/([\d\w\-_]+)/$', cur_tag),
-    ('^tags/([\d\w\-_]+)/$', cur_categ),
+    ('^categories/([\d\w\-_]+)/$', cur_categ),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),

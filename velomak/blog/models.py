@@ -17,6 +17,14 @@ class Category(models.Model):
         tags = Category.objects.all()
         return set([t.categ for t in tags])
 
+    def get_categs(self):
+        """return 
+        Arguments:
+        - `self`:
+        """
+        return Category.objects.values_list('categ', flat=True)
+
+
 class Posts(models.Model):
     header = models.TextField( blank = True )
     post = models.TextField( blank = True )
@@ -58,22 +66,14 @@ class Posts(models.Model):
         # assert False
         return list_tags
 
-    def get_posts_categ(self, id_categ):
+    def get_posts_categ(self, categ):
         """return posts fron id_categ
         Arguments:
         - `self`:
         - `id_categ`: id category
         """
-        return Posts.objects.filter(categories = id_categ)
+        return Posts.objects.filter(categories__categ=categ)
 
-    def get_categs(self):
-        """return categories list
-        """
-        categs = Posts.objects.all()
-        list_categs = [[t.id, t.categories] for t in categs]
-        return list_categs
-
-    
     class Meta:
         ordering = ["-date_pub"]
 
