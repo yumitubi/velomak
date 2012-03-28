@@ -42,8 +42,23 @@ a {
     text-align: center;
 }
 
-#left_menu{
+
+#left_menu {
     vertical-align: top;
     text-align: left;
     padding-left: 15px;
+}
+
+.lines {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.8em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: normal
 }

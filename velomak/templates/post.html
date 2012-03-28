@@ -7,7 +7,7 @@
   <tr>
     <td id="posts" width="800px">
      {% autoescape off %}
-      <p> <a class="header" href="http://127.0.0.1:8000/{{ header_post.id }}/"><h3>{{ header_post.header }}</h3></a></p>
+      <p id="header"> <a href="http://127.0.0.1:8000/{{ header_post.id }}/"><h3>{{ header_post.header }}</h3></a></p>
       <p>{{ header_post.prepost }}</p>
       <p>{{ header_post.post }}</p>
       <p>{{ header_post.date_pub }}</p>
@@ -15,31 +15,14 @@
 	      <a href="http://127.0.0.1:8000/tags/{{ i|inearth }}/"> {{ i }}, </a> 
 	 {% endfor %}
       </p>     
-
-
-
-
- 
         <p>{% render_comment_list for header_post %}</p>
-	<p>test</p>
-	{% render_comment_form for header_post %}
-
-
-
+           {% render_comment_form for header_post %}
      {% endautoescape %}
     </td>
     <td id="left_menu" width="210px">
-    <p >Тестовый текст</p>
-    <p >Тестовый текст</p>
-    <p>Тестовый текст</p>
-    <p>Тестовый текст</p>
-    <p>Тестовый текст</p>
-    <p>Тестовый текст</p>
-    <p>Тестовый текст</p>
-    <p>Тестовый текст</p>
-    <p>Тестовый текст</p>
-    <p>Тестовый текст</p>
-    <p>Тестовый текст</p>
+      {% for i in categ_obr %}
+         <p><a href="http://127.0.0.1:8000/categories/{{ i|inearth }}">{{ i }}</a></p>
+      {% endfor %}
     </td>
   </tr>
 </table>

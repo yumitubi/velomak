@@ -1,6 +1,8 @@
 {% extends "main.html" %}
 {% load pagination_tags %}
 {% load space_in_earth %}
+{% load comments %}
+
     {% block body %}
 
 <table align="center" width="1010" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
@@ -21,8 +23,10 @@
 	  {% endif%}
 	  {% endfor %}
       </p>
-
+          {% get_comment_count for i as comment_count %}
+       <p>{{ comment_count }} комментариев было оставлено на пост.</p>
       <p>{{ i.id }}</p>
+      <p id='lines' ><img src="http://127.0.0.1:8000/static/images/line.gif" alt="line" /></p>
       {% endfor  %}
       {% paginate %}
      {% endautoescape %}

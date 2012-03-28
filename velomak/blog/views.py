@@ -36,11 +36,14 @@ def cur_post(request, offset):
     except:
         pass
     post = Posts()
+    categ = Category()    
     tags_obr = post.get_tag_to_post(offset)
     header_post = post.get_post(current_page)
+    categ_obr = categ.get_categs()    
     return render_to_response('post.html', {'current_page':current_page,
                                              'header_post':header_post,
-                                             'tags_obr':tags_obr},
+                                             'tags_obr':tags_obr,
+                                             'categ_obr':categ_obr},
                                context_instance = RequestContext(request))
 
 def cur_tag(request, offset):
