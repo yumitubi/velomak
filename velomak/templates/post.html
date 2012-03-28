@@ -1,5 +1,6 @@
 {% extends "main.html" %}
 {% load space_in_earth %}
+{% load comments %}
     {% block body %}
 
 <table align="center" width="1010" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
@@ -13,7 +14,18 @@
       <p>{% for i in tags_obr%}
 	      <a href="http://127.0.0.1:8000/tags/{{ i|inearth }}/"> {{ i }}, </a> 
 	 {% endfor %}
-      </p>      
+      </p>     
+
+
+
+
+ 
+        <p>{% render_comment_list for header_post %}</p>
+	<p>test</p>
+	{% render_comment_form for header_post %}
+
+
+
      {% endautoescape %}
     </td>
     <td id="left_menu" width="210px">

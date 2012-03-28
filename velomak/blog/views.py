@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 from django.http import HttpResponseRedirect
 from django.template import RequestContext, Template, Context 
 from django.shortcuts import render_to_response
-from velomak.blog.models import Posts, Category, Comments
+from velomak.blog.models import Posts, Category # , Comments
 
 def blog(request):
     """

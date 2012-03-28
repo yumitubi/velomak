@@ -78,8 +78,8 @@ class Posts(models.Model):
         ordering = ["-date_pub"]
 
 
-class Comments(models.Model):
-    autor = models.CharField(max_length=100)
-    comment = models.TextField( blank = True )
-    id_post = models.IntegerField( default=0 )
-    date_pub = models.DateField()
+# class Comments(models.Model):
+#     autor = models.CharField(max_length=100)
+#     comment = models.TextField( blank = True )
+#     id_post = models.IntegerField( default=0 )
+#     date_pub = models.DateField()
