@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from tinymce import models as tinymce_models
 
 # import tagging
 # from tagging.fields import TagField
@@ -27,8 +28,8 @@ class Category(models.Model):
 
 class Posts(models.Model):
     header = models.TextField( blank = True )
-    post = models.TextField( blank = True )
-    prepost = models.TextField( blank = True )
+    post = tinymce_models.HTMLField( blank = True )
+    prepost = tinymce_models.HTMLField( blank = True )
     date_pub = models.DateField( auto_now_add = True)
     tags = models.TextField( blank=True )
     categories = models.ForeignKey(Category)
@@ -77,6 +78,9 @@ class Posts(models.Model):
     class Meta:
         ordering = ["-date_pub"]
 
+
+class MyModel(models.Model):
+    myField=tinymce_models.HTMLField()
 
 # class Comments(models.Model):
 #     autor = models.CharField(max_length=100)

@@ -42,16 +42,61 @@ a {
     text-align: center;
 }
 
+.prepost {
+    text-align: justify;
+    text-indent: 25px;
+}
 
-#left_menu {
-    vertical-align: top;
+.date {
     text-align: left;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.0em;
+    vertical-align: center;
+}
+
+.tags {
+    text-align: right;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.0em;
+    vertical-align: center;
+}
+
+body a:hover {
+    color: #336699;
+}
+
+a:hover.tags {
+    text-align: right;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.0em;
+    vertical-align: center;
+    color: gray;
+}
+
+.coments {
+    text-align: left;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.0em;
+    vertical-align: center;
+}
+
+#right_menu {
+    position: absolute;
+    font-family: "Georgia", "Times", serif;
+    text-align: right;
     padding-left: 15px;
+    margin-top: 85px;
+    font-size: 1.2em;
 }
 
 .lines {
     text-align: center;
 }
+
+.paginate {
+    text-align: center;
+}
+
 
 h3 {
     text-align: center;

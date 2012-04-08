@@ -12,30 +12,43 @@
       {% autopaginate header_list 5 %}
       {% for i in header_list %}
       <a class="header" href="http://127.0.0.1:8000/{{ i.id }}/"><h3>{{ i.header }}</h3></a>      
-      <p > {{ i.prepost }}</p>
-      <p>{{ i.date_pub }}</p>
-
-      <p> {% for n in tags_obr %}
-	  {% if n.0 == i.id %}
-	       {% for p in n.1 %}
-	         <a href="http://127.0.0.1:8000/tags/{{ p|inearth }}/">{{ p }}, </a>  
-	       {% endfor %}
-	  {% endif%}
-	  {% endfor %}
-      </p>
+      <div class="prepost"> {{ i.prepost }}</div>
+      <table width="100%" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0">
+	<tr>
+	  <td width="50%" >
+	    <p></p>
+	    <div class="date">{{ i.date_pub }}</div>
+	  </td>
+	  <td class="tags" width="50%">
+	    <p></p>
+	    <div> {% for n in tags_obr %}
+	         {% if n.0 == i.id %}
+	          Теги:&nbsp;&nbsp;
+	          {% for p in n.1 %}
+	           <a href="http://127.0.0.1:8000/tags/{{ p|inearth }}/">{{ p }}, </a> 
+	          {% endfor %}
+	         {% endif%}
+	        {% endfor %}
+	    </div>
+	  </td>
+        </tr>
+      </table>
           {% get_comment_count for i as comment_count %}
-       <p>{{ comment_count }} комментариев было оставлено на пост.</p>
-      <p>{{ i.id }}</p>
-      <p id='lines' ><img src="http://127.0.0.1:8000/static/images/line.gif" alt="line" /></p>
+       <div class="coments">{{ comment_count }} комментариев было оставлено на пост.</div>
+      <div class="lines"><img src="http://127.0.0.1:8000/static/images/line.gif" alt="line" /></div>
       {% endfor  %}
-      {% paginate %}
+      <p></p>
+      <div class="paginate">
+	{% paginate %}
+	<p align="center">© le087's blog 2011-2012</p>
+      </div
      {% endautoescape %}
     </td>
-    <td id="left_menu" width="210px">
+    <td id="right_menu" width="210px">
+      <div>Категории:</div> 
       {% for i in categ_obr %}
-         <p><a href="http://127.0.0.1:8000/categories/{{ i|inearth }}">{{ i }}</a></p>
+         <div><a href="http://127.0.0.1:8000/categories/{{ i|inearth }}">{{ i }}</a></div>
       {% endfor %}
-
     </td>
   </tr>
 </table>
