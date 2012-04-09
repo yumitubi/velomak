@@ -6,6 +6,10 @@ body {
     background: #fff url("http://127.0.0.1:8000/static/images/top.png") no-repeat center top;
 }
 
+.maintable {
+    width: 1010px
+}
+
 #test {
     color:red;
 }
@@ -31,6 +35,14 @@ body {
 
 #top_table {
     text-align: center;    
+    width: 1010px;
+}
+
+.top_menu {
+    text-align: left;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.2em;
+    vertical-align: center;
 }
 
 a {
@@ -44,7 +56,6 @@ a {
 
 .prepost {
     text-align: justify;
-    text-indent: 25px;
 }
 
 .date {
@@ -52,6 +63,7 @@ a {
     font-family: "Georgia", "Times", serif;
     font-size: 1.0em;
     vertical-align: center;
+    width: 400px;
 }
 
 .tags {
@@ -59,6 +71,7 @@ a {
     font-family: "Georgia", "Times", serif;
     font-size: 1.0em;
     vertical-align: center;
+    width: 400px;
 }
 
 body a:hover {
@@ -81,12 +94,19 @@ a:hover.tags {
 }
 
 #right_menu {
-    position: absolute;
     font-family: "Georgia", "Times", serif;
     text-align: right;
     padding-left: 15px;
-    margin-top: 85px;
+    vertical-align: top;
     font-size: 1.2em;
+    padding-top: 85px;
+}
+
+.cprg {
+    text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 0.9em;
+    vertical-align: center;
 }
 
 .lines {
@@ -95,6 +115,9 @@ a:hover.tags {
 
 .paginate {
     text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.5em;
+    vertical-align: center;
 }
 
 
@@ -106,4 +129,25 @@ h3 {
     font-variant: normal;
     font-weight: 400;
     line-height: normal
+}
+
+.comments2 {
+    text-align: right;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.2em;
+    vertical-align: center;
+}
+
+.comments {
+    text-align: left;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.2em;
+    vertical-align: center;
+}
+
+.comments0 {
+    text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.5em;
+    vertical-align: center;
 }
