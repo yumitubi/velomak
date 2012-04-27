@@ -3,7 +3,7 @@ body {
     padding: 0;
     font-family: Verdana, "Lucida Grande", Tahoma, Helvetica, sans-serif;
     color: #000;
-    background: #fff url("http://127.0.0.1:8000/static/images/top.png") no-repeat center top;
+    background: #fff url("/static/images/top.png") no-repeat center top;
 }
 
 .maintable {

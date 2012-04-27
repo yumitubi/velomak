@@ -7,7 +7,7 @@
 x  <tr>
     <td id="posts" width="800px">
      {% autoescape off %}
-      <p class="header"> <a href="http://127.0.0.1:8000/{{ header_post.id }}/"><h3>{{ header_post.header }}</h3></a></p>
+      <p class="header"> <a href="/{{ header_post.id }}/"><h3>{{ header_post.header }}</h3></a></p>
       <div class="prepost">{{ header_post.prepost }}</div>
       <div class="prepost">{{ header_post.post }}</div>
       <table width="800px" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0">
@@ -20,13 +20,13 @@ x  <tr>
 	    <p></p>
 	    <div> {% for i in tags_obr %}
 	          Теги:&nbsp;&nbsp;
-	           <a href="http://127.0.0.1:8000/tags/{{ i|inearth }}/">{{ i }}, </a> 
+	           <a href="/tags/{{ i|inearth }}/">{{ i }}, </a> 
                   {% endfor %}
 	    </div>
 	  </td>
         </tr>
       </table>
-      <div class="lines"><img src="http://127.0.0.1:8000/static/images/line.gif" alt="line" /></div>
+      <div class="lines"><img src="/static/images/line.gif" alt="line" /></div>
       <br>
       <div class="comments0">Комментарии:</div>
       <div class="comments">{% render_comment_list for header_post %}</div>
@@ -38,7 +38,7 @@ x  <tr>
     <td id="right_menu" width="210px">
       <div>Категории:</div> 
       {% for i in categ_obr %}
-         <div><a href="http://127.0.0.1:8000/categories/{{ i|inearth }}">{{ i }}</a></div>
+         <div><a href="/categories/{{ i|inearth }}">{{ i }}</a></div>
       {% endfor %}
     </td>
   </tr>
