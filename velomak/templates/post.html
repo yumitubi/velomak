@@ -4,7 +4,7 @@
     {% block body %}
 
 <table class="maintable" align="center" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
-x  <tr>
+  <tr>
     <td id="posts" width="800px">
      {% autoescape off %}
       <p class="header"> <a href="/{{ header_post.id }}/"><h3>{{ header_post.header }}</h3></a></p>
@@ -18,8 +18,7 @@ x  <tr>
 	  </td>
 	  <td class="tags">
 	    <p></p>
-	    <div> {% for i in tags_obr %}
-	          Теги:&nbsp;&nbsp;
+	    <div> Теги:&nbsp;&nbsp;{% for i in tags_obr %}
 	           <a href="/tags/{{ i|inearth }}/">{{ i }}, </a> 
                   {% endfor %}
 	    </div>
