@@ -30,9 +30,10 @@ class Posts(models.Model):
     header = models.TextField( blank = True )
     post = tinymce_models.HTMLField( blank = True )
     prepost = tinymce_models.HTMLField( blank = True )
-    date_pub = models.DateField( auto_now_add = True)
+    date_pub = models.DateField( auto_now_add = True )
     tags = models.TextField( blank=True )
     categories = models.ForeignKey(Category)
+    flag_enabled = models.BooleanField()
 
     def __unicode__(self):
         return self.header
