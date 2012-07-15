@@ -15,13 +15,14 @@ def blog(request):
     header_list = posts.get_posts()
     tags_obr = posts.get_tags()
     categ_obr = categ.get_categs()
+    cloud_tags = posts.cloud_tags()
     # categories = categ.get_categories()
-    # assert False
     return render_to_response('titul.html', {'current_page':current_page,
                                              'header_list':header_list,
                                              'tags_obr':tags_obr,
                                              # 'categories':categories,
-                                             'categ_obr':categ_obr},
+                                             'categ_obr':categ_obr,
+                                             'cloud_tags':cloud_tags},
                                context_instance = RequestContext(request))
 
 def cur_post(request, offset):

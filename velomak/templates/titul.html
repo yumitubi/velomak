@@ -52,6 +52,10 @@
       {% for i in categ_obr %}
          <div><a href="/categories/{{ i|inearth }}">{{ i }}</a></div>
       {% endfor %}
+      </br></br>
+      {% for i in cloud_tags %}
+         <div><a href="/tags/{{ i|inearth }}">{{ i }}</a></div>
+      {% endfor %}
     </td>
   </tr>
 </table>

@@ -55,6 +55,20 @@ class Posts(models.Model):
         list_tags = [[t.id, t.tags.split(',')] for t in tags]
         return list_tags
 
+    def cloud_tags(self):
+        """return all tags in one number
+        """
+        cloud_tag = []
+        tags = Posts.objects.all()
+        for i in tags:
+            list_tags = i.tags.split(',')
+            for p in list_tags:
+                if p in cloud_tag:
+                    pass
+                else:
+                    cloud_tag.append(p)
+        return cloud_tag
+
     def get_posts_tag(self, url_tag):
         """return posts from one tag
         """
