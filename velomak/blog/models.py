@@ -93,12 +93,9 @@ class Posts(models.Model):
     class Meta:
         ordering = ["-date_pub"]
 
+class Tags(models.Model):
+    tags = models.TextField( blank=True, null=True )
+    flag_enabled = models.BooleanField()
 
-class MyModel(models.Model):
-    myField=tinymce_models.HTMLField()
-
-# class Comments(models.Model):
-#     autor = models.CharField(max_length=100)
-#     comment = models.TextField( blank = True )
-#     id_post = models.IntegerField( default=0 )
-#     date_pub = models.DateField()
+    def __unicode__(self):
+        return self.categ
