@@ -67,7 +67,7 @@ class Posts(models.Model):
                     pass
                 else:
                     cloud_tag.append(p)
-        return cloud_tag
+        return sorted(cloud_tag)
 
     def get_posts_tag(self, url_tag):
         """return posts from one tag

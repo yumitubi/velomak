@@ -53,9 +53,9 @@
          <div><a href="/categories/{{ i|inearth }}">{{ i }}</a></div>
       {% endfor %}
       </br></br>
-      {% for i in cloud_tags %}
-         <div><a href="/tags/{{ i|inearth }}">{{ i }}</a></div>
-      {% endfor %}
+      <div id="tags">{% for i in cloud_tags %}
+         <a href="/tags/{{ i|inearth }}">{{ i }}</a>
+      {% endfor %}</div>
     </td>
   </tr>
 </table>

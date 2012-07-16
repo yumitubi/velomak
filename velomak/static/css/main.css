@@ -102,6 +102,13 @@ a:hover.tags {
     padding-top: 85px;
 }
 
+#tags {
+    font-family: "Georgia", "Times", serif;
+    text-align: center;
+    vertical-align: top;
+    font-size: 0.9em;
+}
+
 .cprg {
     text-align: center;
     font-family: "Georgia", "Times", serif;
