@@ -1,0 +1,8 @@
+env/
+*~
+\#*
+\.\#*
+*.swp
+*.py[co]
+*.sqlite
+settings.py
