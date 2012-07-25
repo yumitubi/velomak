@@ -22,14 +22,9 @@
 	  </td>
 	  <td class="tags">
 	    <p></p>
-	    <div> {% for n in tags_obr %}
-	         {% if n.0 == i.id %}
-	          Теги:&nbsp;&nbsp;
-	          {% for p in n.1 %}
-	           <a href="/tags/{{ p|inearth }}/">{{ p }}, </a> 
-	          {% endfor %}
-	         {% endif%}
-	        {% endfor %}
+	    <div> Теги:&nbsp;&nbsp;{% for n in i.tags.all %}
+	                            <a href="/tags/{{ n.tag|inearth }}/">{{ n.tag }}, </a>
+	                            {% endfor %}
 	    </div>
 	  </td>
         </tr>

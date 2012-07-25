@@ -1,5 +1,5 @@
 from django.contrib import admin
-from velomak.blog.models import Posts, Category # , Comments
+from velomak.blog.models import Posts, Category, Tags
 
 class PollAdmin(admin.ModelAdmin):
     # ...
@@ -7,4 +7,5 @@ class PollAdmin(admin.ModelAdmin):
 
 admin.site.register(Posts, PollAdmin)
 admin.site.register(Category)
+admin.site.register(Tags)
 # admin.site.register(Comments)
