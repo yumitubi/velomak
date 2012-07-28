@@ -9,97 +9,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   </head>
   <body topmargin="0">
-    {% block top %}
-
-<table id="top_table" align="center" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
-  <tr>
-    <td height="100px">
-      <h1 id="name_site"><a href="http://le087.ru">le087's blog</a></h1>
-
-    </td>
-  </tr>
-  <tr>
-    <td height="10px"><p id="site_slogan">просто_люблю_linux</p></td>
-  </tr>
-</table>
-
-    {% endblock%}
-    {% block menu %}
-
-<table align="center" width="1010px" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
-  <tr>
-    <td height="40px" width="100px">
-      
-      <table class="top_menu" align="center" width="100px" cellspacing="0" cellpadding="0" border="0">
-	<tr>
-	  <td><a href="/">Главная</a></td>
-	</tr>
-      </table>
-    
-    </td>
-    <td height="40px" width="100px">
-      
-      <table class="top_menu" align="center" width="100px" cellspacing="0" cellpadding="0" border="0">
-	<tr>
-	  <td><a href="/about/">Обо мне</a></td>
-	</tr>
-      </table>
-      
-    </td>
-    <td height="40px" width="100px">
-      
-      <table align="center" width="100px" cellspacing="0" cellpadding="0" border="0">
-	<tr>
-	  <td></td>
-	</tr>
-      </table>
-      
-    </td>
-    <td height="40px" width="100px">
-      
-      <table align="center" width="100px" cellspacing="0" cellpadding="0" border="0">
-	<tr>
-	  <td></td>
-	</tr>
-      </table>
-      
-    </td>
-    <td height="40px" width="100px">
-      
-      <table align="center" width="100px" cellspacing="0" cellpadding="0" border="0">
-	<tr>
-	  <td></td>
-	</tr>
-      </table>
-      
-    </td>
-    <td height="40px" width="100px">
-      
-      <table align="center" width="100px" cellspacing="0" cellpadding="0" border="0">
-	<tr>
-	  <td></td>
-	</tr>
-      </table>
-      
-    </td>
-    <td height="40px" width="100px">
-      
-      <table align="center" width="100px" cellspacing="0" cellpadding="0" border="0">
-	<tr>
-	  <td></td>
-	</tr>
-      </table>
-      
-    </td>
-
-  </tr>
-</table>
-    {% endblock%}
+    <div id="container">
+      <div id="header">
+	<div id="name_site">
+	  <a href="http://le087.ru">le087's blog</a>	  
+	</div>
+	<div id="site_slogan">
+	  просто_люблю_linux
+	</div>
+      </div>
+      <div id="top_menu">
+	<div class="item_menu">
+	  <a href="/">Главная</a>
+	</div>
+	<div class="item_menu">
+	  <a href="/about/">Обо мне</a>
+	</div>
+      </div>
     {% block body %}
-
     {% endblock%}
     {% block bottom %}
-
     {% endblock%}
+    </div> 
   </body> 
 </html>
