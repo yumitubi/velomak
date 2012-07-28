@@ -37,12 +37,14 @@ def cur_post(request, offset):
         HttpResponseRedirect(reverse(u'velomak-blog'))
     tags_obr = get_tag_to_post(offset)
     header_post = get_post(current_page)
-    categ_obr = get_categs()    
+    categ_obr = get_categs()
+    cloud_tags = get_tags()
     return render_to_response('post.html', {
         'current_page':current_page,
         'header_post':header_post,
         'tags_obr':tags_obr,
-        'categ_obr':categ_obr
+        'categ_obr':categ_obr,
+        'cloud_tags':cloud_tags 
         }, context_instance = RequestContext(request))
 
 def cur_tag(request, offset):
@@ -56,12 +58,14 @@ def cur_tag(request, offset):
     header_list = get_posts_tag(offset_without_earth)
     tags_obr = get_tags()
     categ_obr = get_categs()
+    cloud_tags = get_tags()
     if header_list:
         return render_to_response('titul.html', {
             'current_page':current_page,
             'header_list':header_list,
             'tags_obr':tags_obr,
-            'categ_obr':categ_obr
+            'categ_obr':categ_obr,
+            'cloud_tags':cloud_tags 
             }, context_instance = RequestContext(request))
     else:
         current_page = u"Об авторе"
@@ -80,12 +84,14 @@ def cur_categ(request, offset):
     header_list = get_posts_categ(offset_without_earth)
     categ_obr = get_categs()
     tags_obr = get_tags()
+    cloud_tags = get_tags()
     if header_list:
         return render_to_response('titul.html', {
             'current_page':current_page,
             'header_list':header_list,
             'categ_obr':categ_obr,
-            'tags_obr':tags_obr
+            'tags_obr':tags_obr,
+            'cloud_tags':cloud_tags 
             }, context_instance = RequestContext(request))
     else:
         current_page = "Об авторе"
