@@ -1,0 +1,14 @@
+{% load space_in_earth %}
+<div id="categories">Категории:</div> 
+{% for i in categ_obr %}
+  <div class="categories"><a href="/categories/{{ i|inearth }}">{{ i }}</a></div>
+{% endfor %}
+<br />
+<div>
+  <div id="tags_right">Облако тегов:</div>
+  <div class="tag_right">{% for i in cloud_tags %}
+    <a href="/tags/{{ i|inearth }}">{{ i }}</a>
+  {% endfor %}</div>
+</div>
+
+

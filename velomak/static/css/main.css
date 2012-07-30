@@ -3,14 +3,11 @@ a {
     text-decoration: none;
 }
 
-.maintable {
-    width: 1010px
-}
 
 #container {
     margin: 0;
     padding: 0;
-    font-family: Verdana, "Lucida Grande", Tahoma, Helvetica, sans-serif;
+    font-family: Verdana, "Lucida Grande", Tahoma, Helveti, sans-serif;
     color: #000;
     background: #fff url("/static/images/top2.png") no-repeat center top;
 }
@@ -20,6 +17,7 @@ a {
     height: 150px;
     margin: 0 auto;
 }
+
 
 #name_site {
     display: table-cell;
@@ -61,7 +59,9 @@ a {
     font-size: 1.2em;
     vertical-align: middle;
     background: #eee;
+    border:2px solid #aaa;
 }
+
 
 .item_menu {
     width:100px;
@@ -74,6 +74,60 @@ a {
 
 #top_menu div:first-child{ 
     margin-left:0px;
+}
+
+#main {
+    width: 1010px;
+    margin: 0 auto;
+    font-family: "Georgia", "Times", serif;
+}
+
+#post {
+    width: 785px;
+    padding: 0px 10px 0px 0px;
+    float: left;
+}
+
+#right_block {
+    width: 210px;
+    margin: right;
+    float: left;
+    text-align: center;
+    padding-left: 5px;
+    margin-top: 18px;
+}
+
+#categories {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    border:2px solid #aaa;
+    margin-top: 1px;
+}
+
+.categories {
+    background: #eee;
+    height: 30px;
+    line-height: 29px;
+    border:2px solid #aaa;
+    margin-top: 1px;
+}
+
+#tags_right {
+    font-family: "Georgia", "Times", serif;
+    background: #eee;
+    height: 30px;
+    line-height:29px;
+    border:2px solid #aaa;
+    margin-top: 1px;
+    background: #ddd;
+}
+
+.tag_right {
+    font-family: "Georgia", "Times", serif;
+    background: #eee;
+    border:2px solid #aaa;
+    margin-top: 1px;
 }
 
 .header {
