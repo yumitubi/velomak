@@ -4,53 +4,33 @@
 {% load comments %}
 
 {% block body %}
-<table class="maintable" align="center" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0" >
-  <tr>
-    <td id="posts" width="800px">
-     {% autoescape off %}
-      {% autopaginate header_list 7 %}
-      {% for i in header_list %}
-      {% if i.flag_enabled %}
-      <a class="header" href="/{{ i.id }}/"><h3>{{ i.header }}</h3></a>      
-      <div class="prepost"> {{ i.prepost }}</div>
-      <table width="800px" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-	  <td>
-	    <p></p>
-	    <div class="date">{{ i.date_pub }}</div>
-	  </td>
-	  <td class="tags">
-	    <p></p>
-	    <div> Теги:&nbsp;&nbsp;{% for n in i.tags.all %}
-	                            <a href="/tags/{{ n.tag|inearth }}/">{{ n.tag }}, </a>
-	                            {% endfor %}
-	    </div>
-	  </td>
-        </tr>
-      </table>
-          {% get_comment_count for i as comment_count %}
-       <div class="coments">{{ comment_count }} комментариев было оставлено на пост.</div>
-      <div class="lines"><img src="/static/images/line.gif" alt="line" /></div>
-      {% endif %}
-      {% endfor  %}
-      <p></p>
-      <div class="paginate">
-	{% paginate %}
-      </div
-     {% endautoescape %}
-	 <p></p>
-	<p><div class="cprg">© le087's blog 2011-2012</div></p>
-    </td>
-    <td id="right_menu">
-      <div>Категории:</div> 
-      {% for i in categ_obr %}
-         <div><a href="/categories/{{ i|inearth }}">{{ i }}</a></div>
-      {% endfor %}
-      </br></br>
-      <div id="tags">{% for i in cloud_tags %}
-         <a href="/tags/{{ i|inearth }}">{{ i }}</a>
-      {% endfor %}</div>
-    </td>
-  </tr>
-</table>
+<div id="post">
+ {% autoescape off %}
+ {% autopaginate header_list 7 %}
+ {% for i in header_list %}
+ {% if i.flag_enabled %}
+ <a class="header_post" href="/{{ i.id }}/"><h3>{{ i.header }}</h3></a>      
+ <div class="prepost"> {{ i.prepost }}</div>
+ <p></p>
+ <div class="date">{{ i.date_pub }}</div>
+ <div class="tags"> 
+   Теги:&nbsp;&nbsp;{% for n in i.tags.all %}
+   <a href="/tags/{{ n.tag|inearth }}/">{{ n.tag }},</a>
+   {% endfor %}
+ </div>
+ {% get_comment_count for i as comment_count %}
+ <div class="coments">{{ comment_count }} комментариев было оставлено на пост.</div>
+ <div class="lines"><img src="/static/images/line.gif" alt="line" /></div>
+ {% endif %}
+ {% endfor  %}
+ <p></p>
+ <div class="paginate">{% paginate %}</div>
+ {% endautoescape %}
+ <p></p>
+ <p><div id="cprg">© le087's blog 2011-2012</div></p>
+</div>
+
+<div id="right_block">
+  {% include "right_menu.html" %}
+</div>
 {% endblock%}

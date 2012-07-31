@@ -3,6 +3,10 @@ a {
     text-decoration: none;
 }
 
+li, ul {
+    text-indent: 0px;
+}
+
 #container {
     margin: 0;
     padding: 0;
@@ -127,12 +131,13 @@ a {
     margin-top: 1px;
 }
 
-.header {
+.header_post {
     text-align: center;
 }
 
 .prepost {
     text-align: justify;
+    text-indent: 25px;
 }
 
 .footer_post {
