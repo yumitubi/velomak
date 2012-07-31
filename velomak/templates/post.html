@@ -2,36 +2,34 @@
 {% load space_in_earth %}
 {% load comments %}
 {% block body %}
+
 <div id="post">
-    <td id="posts" width="800px">
-     {% autoescape off %}
-      <p class="header"> <a href="/{{ header_post.id }}/"><h3>{{ header_post.header }}</h3></a></p>
-      <div class="prepost">{{ header_post.prepost }}</div>
-      <div class="prepost">{{ header_post.post }}</div>
-      <table width="800px" margin="0" padding="0" cellspacing="0" cellpadding="0" border="0">
-        <tr>
-	  <td>
-	    <p></p>
-	    <div class="date">{{ header_post.date_pub }}</div>
-	  </td>
-	  <td class="tags">
-	    <p></p>
-	    <div> Теги:&nbsp;&nbsp;{% for i in tags_obr %}
-	           <a href="/tags/{{ i|inearth }}/">{{ i }}, </a> 
-                  {% endfor %}
-	    </div>
-	  </td>
-        </tr>
-      </table>
-      <div class="lines"><img src="/static/images/line.gif" alt="line" /></div>
-      <br>
-      <div class="comments0">Комментарии:</div>
-      <div class="comments">{% render_comment_list for header_post %}</div>
-      <div class="comments2">{% render_comment_form for header_post %}</div>
-     {% endautoescape %}
-	  <p></p>
-	  <p><div class="cprg">© le087's blog 2011-2012</div></p>
+  {% autoescape off %}
+  <p class="header">
+    <a href="/{{ header_post.id }}/"><h3>{{ header_post.header }}</h3></a>
+  </p>
+  <div class="prepost">{{ header_post.prepost }}</div>
+  <div class="prepost">{{ header_post.post }}</div>
+  <p></p>
+  <div class="footer_post">
+    <div class="date">{{ header_post.date_pub }}</div>
+    <p></p>
+    <div class="tags"> 
+      Теги:&nbsp;&nbsp;{% for i in tags_obr %}
+      <a href="/tags/{{ i|inearth }}/">{{ i }}, </a> 
+      {% endfor %}
+    </div>
+  </div>
+  <div class="lines"><img src="/static/images/line.gif" alt="line" /></div>
+  <br>
+  <div class="comments0">Комментарии:</div>
+  <div class="comments">{% render_comment_list for header_post %}</div>
+  <div class="comments2">{% render_comment_form for header_post %}</div>
+  {% endautoescape %}
+  <p></p>
+  <p><div id="cprg">© le087's blog 2011-2012</div></p>
 </div>
+
 <div id="right_block">
   {% include "right_menu.html" %}
 </div>
