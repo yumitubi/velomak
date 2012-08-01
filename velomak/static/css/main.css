@@ -73,6 +73,15 @@ li, ul, code {
     text-shadow: 1px 1px #aaa;  
 }
 
+#rss {
+    float:right;
+    width:31px;
+    padding: 2px 2px 2px 2px;
+    height: 31px;
+    margin-left:40px;
+    line-height:39px;
+}
+
 #top_menu div:first-child{ 
     margin-left:0px;
 }
