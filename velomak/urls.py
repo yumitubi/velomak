@@ -2,7 +2,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from velomak.blog.views import blog, cur_post, about, cur_tag, cur_categ
 from django.conf import settings
-# Uncomment the next two lines to enable the admin:
+from blog.feed import RSSFeed
 from django.contrib import admin
 admin.autodiscover()
 
@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     ('^tags/([\d\w\-_]+)/$', cur_tag),
     ('^categories/([\d\w\-_]+)/$', cur_categ),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    url(r'^feed/?$', RSSFeed()),
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),
