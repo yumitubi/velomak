@@ -1,6 +1,11 @@
 {% extends "main.html" %}
 {% load space_in_earth %}
 {% load comments %}
+
+{% block meta %}
+<meta name="keywords" content="le087 blog {% for m in  meta %}{{ m }} {% endfor %}">
+{% endblock %}
+
 {% block body %}
 
 <div id="post">

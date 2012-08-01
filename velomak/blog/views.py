@@ -11,6 +11,7 @@ def blog(request):
     """
     current_page = u"Главная страница"
     header_list = get_posts()
+    meta = "блог le087 emacs linux python django"
     tags_obr = get_tags()
     # assert False
     categ_obr = get_categs()
@@ -20,7 +21,8 @@ def blog(request):
         'header_list':header_list,
         'tags_obr':tags_obr,
         'categ_obr':categ_obr,
-        'cloud_tags':cloud_tags
+        'cloud_tags':cloud_tags,
+        'meta':meta
         }, context_instance = RequestContext(request))
 
 def cur_post(request, offset):
@@ -35,7 +37,7 @@ def cur_post(request, offset):
         # Если запрашивается некорректный номер страницы,
         # то перебрасываем на заглавную
         HttpResponseRedirect(reverse(u'velomak-blog'))
-    tags_obr = get_tag_to_post(offset)
+    meta = tags_obr = get_tag_to_post(offset)
     header_post = get_post(current_page)
     categ_obr = get_categs()
     cloud_tags = get_tags()
@@ -44,7 +46,8 @@ def cur_post(request, offset):
         'header_post':header_post,
         'tags_obr':tags_obr,
         'categ_obr':categ_obr,
-        'cloud_tags':cloud_tags 
+        'cloud_tags':cloud_tags,
+        'meta':meta 
         }, context_instance = RequestContext(request))
 
 def cur_tag(request, offset):
@@ -55,6 +58,7 @@ def cur_tag(request, offset):
     """
     current_page = u"Материалы по тегу: " + offset
     offset_without_earth = offset.replace('_', ' ')
+    meta = "блог le087 emacs linux python django"
     header_list = get_posts_tag(offset_without_earth)
     tags_obr = get_tags()
     categ_obr = get_categs()
@@ -65,7 +69,8 @@ def cur_tag(request, offset):
             'header_list':header_list,
             'tags_obr':tags_obr,
             'categ_obr':categ_obr,
-            'cloud_tags':cloud_tags 
+            'cloud_tags':cloud_tags,
+            'meta':meta 
             }, context_instance = RequestContext(request))
     else:
         current_page = u"Об авторе"
@@ -81,6 +86,7 @@ def cur_categ(request, offset):
     """
     current_page = u"Материалы по категории: " + offset
     offset_without_earth = offset.replace('_', ' ')
+    meta = "блог le087 emacs linux python django"
     header_list = get_posts_categ(offset_without_earth)
     categ_obr = get_categs()
     tags_obr = get_tags()
@@ -91,7 +97,8 @@ def cur_categ(request, offset):
             'header_list':header_list,
             'categ_obr':categ_obr,
             'tags_obr':tags_obr,
-            'cloud_tags':cloud_tags 
+            'cloud_tags':cloud_tags,
+            'meta':meta 
             }, context_instance = RequestContext(request))
     else:
         current_page = "Об авторе"
@@ -102,8 +109,10 @@ def cur_categ(request, offset):
 def about(request):
     """Возвращает страницу About
     """
+    meta = "блог le087 emacs linux python django"
     current_page = "Об авторе"
     return render_to_response('about.html', {
-        'current_page':current_page
+        'current_page':current_page,
+        'meta':meta
         }, context_instance = RequestContext(request))
     

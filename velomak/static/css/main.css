@@ -3,7 +3,7 @@ a {
     text-decoration: none;
 }
 
-li, ul {
+li, ul, code {
     text-indent: 0px;
 }
 

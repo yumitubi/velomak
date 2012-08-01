@@ -3,6 +3,10 @@
 {% load space_in_earth %}
 {% load comments %}
 
+{% block meta %}
+<meta name="keywords" content="{{ meta }}">
+{% endblock %}
+
 {% block body %}
 <div id="post">
  {% autoescape off %}
