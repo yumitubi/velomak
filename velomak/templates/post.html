@@ -21,7 +21,7 @@
     <p></p>
     <div class="tags"> 
       Теги:&nbsp;&nbsp;{% for i in tags_obr %}
-      <a href="/tags/{{ i|inearth }}/">{{ i }}, </a> 
+      <a href="/tags/{{ i|inearth }}/">{{ i }}{% if not forloop.last %}, {% endif %}</a> 
       {% endfor %}
     </div>
   </div>

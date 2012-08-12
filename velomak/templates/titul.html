@@ -19,7 +19,7 @@
  <div class="date">{{ i.date_pub }}</div>
  <div class="tags"> 
    Теги:&nbsp;&nbsp;{% for n in i.tags.all %}
-   <a href="/tags/{{ n.tag|inearth }}/">{{ n.tag }},</a>
+   <a href="/tags/{{ n.tag|inearth }}/">{{ n.tag }}{% if not forloop.last %}, {% endif %}</a>
    {% endfor %}
  </div>
  {% get_comment_count for i as comment_count %}
