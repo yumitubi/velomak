@@ -33,3 +33,11 @@ class Posts(models.Model):
 
     class Meta:
         ordering = ["-date_pub"]
+
+class Files(models.Model):
+    title = models.CharField(max_length=100)
+    discription = models.TextField( blank = True )
+    files = models.FileField(upload_to='files')
+
+    def __unicode__(self):
+        return self.title
