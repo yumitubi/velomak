@@ -13,7 +13,6 @@ def blog(request):
     header_list = get_posts()
     meta = "блог le087 emacs linux python django"
     tags_obr = get_tags()
-    # assert False
     categ_obr = get_categs()
     cloud_tags = get_tags()
     return render_to_response('titul.html', {

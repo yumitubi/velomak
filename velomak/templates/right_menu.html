@@ -1,7 +1,9 @@
 {% load space_in_earth %}
 <div id="categories">Категории:</div> 
 {% for i in categ_obr %}
-  <div class="categories"><a href="/categories/{{ i|inearth }}">{{ i }}</a></div>
+  {% if i.enabled %}
+    <div class="categories"><a href="/categories/{{ i.categ|inearth }}">{{ i.categ }}</a></div>
+  {% endif %}
 {% endfor %}
 <br />
 <div>

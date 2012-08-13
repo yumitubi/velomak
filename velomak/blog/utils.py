@@ -42,9 +42,5 @@ def get_categs():
     Arguments:
     - `self`:
     """
-    return Category.objects.values_list('categ', flat=True)
+    return Category.objects.all()
 
-def get_categories(self):
-    """return categories
-    """
-    return set(get_categs())

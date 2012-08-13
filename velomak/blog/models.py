@@ -4,9 +4,14 @@ from tinymce import models as tinymce_models
 
 class Category(models.Model):
     categ = models.CharField(blank=True, null=False, max_length=64, unique=True)
-
+    enabled = models.BooleanField()
+    weight = models.IntegerField(default=1)
+    
     def __unicode__(self):
         return self.categ
+
+    class Meta:
+        ordering = ["-weight"]
 
 class Tags(models.Model):
     tag = models.CharField(blank=True, null=False, max_length=64, unique=True)
