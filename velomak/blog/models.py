@@ -19,6 +19,17 @@ class Tags(models.Model):
     def __unicode__(self):
         return self.tag
 
+class Section(models.Model):
+    section = models.CharField(null=True, max_length=64, unique=True)
+    weight = models.IntegerField(default=1)
+    enabled = models.BooleanField()
+
+    def __unicode__(self):
+        return self.section
+
+    class Meta:
+        ordering = ["weight"]
+
 class Posts(models.Model):
     header = models.TextField( blank = True )
     post = tinymce_models.HTMLField( blank = True )
@@ -27,6 +38,7 @@ class Posts(models.Model):
     tags = models.ManyToManyField(Tags)
     categories = models.ForeignKey(Category)
     flag_enabled = models.BooleanField()
+    section = models.ForeignKey(Section, null=True)
 
     def __unicode__(self):
         return self.header

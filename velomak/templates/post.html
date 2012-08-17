@@ -6,8 +6,17 @@
 <meta name="keywords" content="le087 blog {% for m in  meta %}{{ m }} {% endfor %}">
 {% endblock %}
 
-{% block body %}
+{% block top_menu%}
+{% for i in section_posts %}
+{% if i.enabled %}
+<div class="item_menu">
+  <a href="/section/{{ i.section|inearth }}">{{ i.section }}</a>
+</div>
+{% endif%}
+{% endfor %}
+{% endblock %}
 
+{% block body %}
 <div id="post">
   {% autoescape off %}
   <p class="header">

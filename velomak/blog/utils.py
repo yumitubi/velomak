@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from velomak.blog.models import Posts, Tags, Category
+from velomak.blog.models import Posts, Tags, Category, Section
 
 def get_posts():
     """return posts
@@ -44,3 +44,12 @@ def get_categs():
     """
     return Category.objects.all()
 
+def get_posts_section(sect):
+    """return posts from one section
+    """
+    return Posts.objects.filter(section__section=sect)
+
+def get_sections():
+    """ return sections for template
+    """
+    return Section.objects.all()

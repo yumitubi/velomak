@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
-from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post
+from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections
 
 def blog(request):
     """
@@ -15,13 +15,15 @@ def blog(request):
     tags_obr = get_tags()
     categ_obr = get_categs()
     cloud_tags = get_tags()
+    section_posts = get_sections()
     return render_to_response('titul.html', {
         'current_page':current_page,
         'header_list':header_list,
         'tags_obr':tags_obr,
         'categ_obr':categ_obr,
         'cloud_tags':cloud_tags,
-        'meta':meta
+        'meta':meta,
+        'section_posts':section_posts
         }, context_instance = RequestContext(request))
 
 def cur_post(request, offset):
@@ -40,13 +42,15 @@ def cur_post(request, offset):
     header_post = get_post(current_page)
     categ_obr = get_categs()
     cloud_tags = get_tags()
+    section_posts = get_sections()
     return render_to_response('post.html', {
         'current_page':current_page,
         'header_post':header_post,
         'tags_obr':tags_obr,
         'categ_obr':categ_obr,
         'cloud_tags':cloud_tags,
-        'meta':meta 
+        'meta':meta,
+        'section_posts':section_posts 
         }, context_instance = RequestContext(request))
 
 def cur_tag(request, offset):
@@ -62,6 +66,7 @@ def cur_tag(request, offset):
     tags_obr = get_tags()
     categ_obr = get_categs()
     cloud_tags = get_tags()
+    section_posts = get_sections()
     if header_list:
         return render_to_response('titul.html', {
             'current_page':current_page,
@@ -69,7 +74,8 @@ def cur_tag(request, offset):
             'tags_obr':tags_obr,
             'categ_obr':categ_obr,
             'cloud_tags':cloud_tags,
-            'meta':meta 
+            'meta':meta,
+            'section_posts':section_posts 
             }, context_instance = RequestContext(request))
     else:
         current_page = u"Об авторе"
@@ -90,6 +96,7 @@ def cur_categ(request, offset):
     categ_obr = get_categs()
     tags_obr = get_tags()
     cloud_tags = get_tags()
+    section_posts = get_sections()
     if header_list:
         return render_to_response('titul.html', {
             'current_page':current_page,
@@ -97,7 +104,35 @@ def cur_categ(request, offset):
             'categ_obr':categ_obr,
             'tags_obr':tags_obr,
             'cloud_tags':cloud_tags,
-            'meta':meta 
+            'meta':meta,
+            'section_posts':section_posts 
+            }, context_instance = RequestContext(request))
+    else:
+        current_page = "Об авторе"
+        return render_to_response('about.html', {
+            'current_page':current_page
+            }, context_instance = RequestContext(request))
+
+def cur_section(request, offset):
+    """ Обображает материалы для конкретной секции
+    """
+    current_page = u"Материалы в разделе: " + offset
+    offset_without_earth = offset.replace('_', ' ')
+    meta = "блог le087 emacs linux python django"
+    header_list = get_posts_section(offset_without_earth)
+    categ_obr = get_categs()
+    tags_obr = get_tags()
+    cloud_tags = get_tags()
+    section_posts = get_sections()
+    if header_list:
+        return render_to_response('titul.html', {
+            'current_page':current_page,
+            'header_list':header_list,
+            'categ_obr':categ_obr,
+            'tags_obr':tags_obr,
+            'cloud_tags':cloud_tags,
+            'meta':meta,
+            'section_posts':section_posts
             }, context_instance = RequestContext(request))
     else:
         current_page = "Об авторе"
@@ -110,8 +145,10 @@ def about(request):
     """
     meta = "блог le087 emacs linux python django"
     current_page = "Об авторе"
+    section_posts = get_posts_section()
     return render_to_response('about.html', {
         'current_page':current_page,
-        'meta':meta
+        'meta':meta,
+        'section_posts':section_posts
         }, context_instance = RequestContext(request))
     

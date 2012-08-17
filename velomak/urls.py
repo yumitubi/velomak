@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import patterns, include, url
-from velomak.blog.views import blog, cur_post, about, cur_tag, cur_categ
+from velomak.blog.views import blog, cur_post, about, cur_tag, cur_categ, cur_section
 from django.conf import settings
 from blog.feed import RSSFeed
 from django.contrib import admin
@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     ('^(\d+)/$', cur_post),
     ('^tags/([\d\w\-_]+)/$', cur_tag),
     ('^categories/([\d\w\-_]+)/$', cur_categ),
+    ('^section/([\d\w\-_]+)/$', cur_section),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^feed/?$', RSSFeed()),
     # Examples:
