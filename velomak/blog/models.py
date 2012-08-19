@@ -2,10 +2,22 @@
 from django.db import models
 from tinymce import models as tinymce_models
 
+class Section(models.Model):
+    section = models.CharField(blank=True, null=True, max_length=64, unique=True)
+    weight = models.IntegerField(default=1)
+    enabled = models.BooleanField()
+
+    def __unicode__(self):
+        return self.section
+
+    class Meta:
+        ordering = ["weight"]
+
 class Category(models.Model):
     categ = models.CharField(blank=True, null=False, max_length=64, unique=True)
     enabled = models.BooleanField()
     weight = models.IntegerField(default=1)
+    section = models.ForeignKey(Section, blank=True, null=True)
     
     def __unicode__(self):
         return self.categ
@@ -19,17 +31,6 @@ class Tags(models.Model):
     def __unicode__(self):
         return self.tag
 
-class Section(models.Model):
-    section = models.CharField(null=True, max_length=64, unique=True)
-    weight = models.IntegerField(default=1)
-    enabled = models.BooleanField()
-
-    def __unicode__(self):
-        return self.section
-
-    class Meta:
-        ordering = ["weight"]
-
 class Posts(models.Model):
     header = models.TextField( blank = True )
     post = tinymce_models.HTMLField( blank = True )
@@ -38,7 +39,7 @@ class Posts(models.Model):
     tags = models.ManyToManyField(Tags)
     categories = models.ForeignKey(Category)
     flag_enabled = models.BooleanField()
-    section = models.ForeignKey(Section, null=True)
+    section = models.ForeignKey(Section, blank=True, null=True)
 
     def __unicode__(self):
         return self.header

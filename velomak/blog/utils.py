@@ -53,3 +53,11 @@ def get_sections():
     """ return sections for template
     """
     return Section.objects.all()
+
+def get_categs_section(sect):
+    """return list categories for one section
+    Arguments:
+    - `sect`: current section
+    """
+    return Category.objects.filter(section__section=sect)
+    

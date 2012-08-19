@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
-from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections
+from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section
 
 def blog(request):
     """
@@ -93,7 +93,10 @@ def cur_categ(request, offset):
     offset_without_earth = offset.replace('_', ' ')
     meta = "блог le087 emacs linux python django"
     header_list = get_posts_categ(offset_without_earth)
-    categ_obr = get_categs()
+    # categ_obr - получаем категории, которые принадлежат
+    # только к определенной категории
+    if header_list[0].section: 
+        categ_obr = get_categs_section(header_list[0].section) 
     tags_obr = get_tags()
     cloud_tags = get_tags()
     section_posts = get_sections()
@@ -120,7 +123,7 @@ def cur_section(request, offset):
     offset_without_earth = offset.replace('_', ' ')
     meta = "блог le087 emacs linux python django"
     header_list = get_posts_section(offset_without_earth)
-    categ_obr = get_categs()
+    categ_obr = get_categs_section(offset_without_earth)
     tags_obr = get_tags()
     cloud_tags = get_tags()
     section_posts = get_sections()
