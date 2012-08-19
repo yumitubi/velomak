@@ -5,7 +5,7 @@ from velomak.blog.models import Posts, Tags, Category, Section
 def get_posts():
     """return posts
     """
-    return Posts.objects.all()
+    return Posts.objects.filter(not_publicate_main=0)
 
 def get_post(url_post):
     """return post

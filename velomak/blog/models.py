@@ -39,7 +39,9 @@ class Posts(models.Model):
     tags = models.ManyToManyField(Tags)
     categories = models.ForeignKey(Category)
     flag_enabled = models.BooleanField()
+    not_publicate_main = models.BooleanField()
     section = models.ForeignKey(Section, blank=True, null=True)
+
 
     def __unicode__(self):
         return self.header
