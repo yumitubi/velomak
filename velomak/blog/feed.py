@@ -12,7 +12,7 @@ class RSSFeed(Feed):
     item_author_name = 'le087'
 
     def items(self):
-        return Posts.objects.order_by('-date_pub')[:5]
+        return Posts.objects.filter(not_publicate_main=0).order_by('-date_pub')[:5]
     
     def item_description(self, post):
         return post.prepost
