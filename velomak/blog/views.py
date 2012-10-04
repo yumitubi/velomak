@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
+from forms import CommentForm
 from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section
 
 def blog(request):
@@ -43,6 +44,12 @@ def cur_post(request, offset):
     categ_obr = get_categs()
     cloud_tags = get_tags()
     section_posts = get_sections()
+    if request.method == 'POST':
+        pass
+    else:
+        comment_form = CommentForm({'author':'тут впишите свое имя',
+                                    'email':'your@email.com',
+                                    'message':'добавьте комментарий'})
     return render_to_response('post.html', {
         'current_page':current_page,
         'header_post':header_post,
@@ -50,7 +57,8 @@ def cur_post(request, offset):
         'categ_obr':categ_obr,
         'cloud_tags':cloud_tags,
         'meta':meta,
-        'section_posts':section_posts 
+        'section_posts':section_posts,
+        'comment_form':comment_form
         }, context_instance = RequestContext(request))
 
 def cur_tag(request, offset):

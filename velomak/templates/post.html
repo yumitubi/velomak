@@ -36,9 +36,15 @@
   </div>
   <div class="lines"><img src="/static/images/line.gif" alt="line" /></div>
   <br>
-  <div class="comments0">Комментарии:</div>
-  <div class="comments">{% render_comment_list for header_post %}</div>
-  <div class="comments2">{% render_comment_form for header_post %}</div>
+  <h3>Комментарии: </h3>
+  <form method="POST">
+    <table>
+      <div class="comment0">{{ comment_form }}</div>       
+      <tr>
+	<td></td><td><br /><input type="submit" value="Добавить комментарий" /></td>
+      </tr>
+    </table>
+  </form>
   {% endautoescape %}
   <p></p>
   <p><div id="cprg">© le087's blog 2011-2012</div></p>

@@ -56,3 +56,17 @@ class Files(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class Comms(models.Model):
+    author = models.CharField(blank=True, null=True, max_length=100)
+    email = models.CharField(blank=True, null=True, max_length=100)
+    post = models.ForeignKey(Posts)
+    message = models.TextField( blank = True )
+    datatime = models.DateTimeField(auto_now_add=True)
+    delete = models.BooleanField()
+    
+    def __unicode__(self):
+        return self.autor
+
+    class Meta:
+        ordering = ["datatime"]
