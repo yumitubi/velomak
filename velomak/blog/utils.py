@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from velomak.blog.models import Posts, Tags, Category, Section
+from velomak.blog.models import Posts, Tags, Category, Section, Comms
 
 def get_posts():
     """return posts
@@ -60,4 +60,26 @@ def get_categs_section(sect):
     - `sect`: current section
     """
     return Category.objects.filter(section__section=sect)
+    
+def save_comment(dicti):
+    """save comment from user
+    Arguments:
+    - `dicti`: data in database
+    """
+    add_note = Comms(author=dicti['author'],
+                     email=dicti['email'],
+                     post_id=int(dicti['post']),
+                     message=dicti['message'],
+                     delete=dicti['delete']) 
+    add_note.save()
+    return True
+
+def get_comments(id_post):
+    """get all comments for one post
+    
+    Arguments:
+    - `id_post`: id of post
+    """
+    return Comms.objects.filter(post__id=id_post)
+
     

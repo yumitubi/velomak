@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from forms import CommentForm
-from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section
+from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section, save_comment, get_comments
 
 def blog(request):
     """
@@ -44,10 +44,18 @@ def cur_post(request, offset):
     categ_obr = get_categs()
     cloud_tags = get_tags()
     section_posts = get_sections()
+    comments = get_comments(current_page)
     if request.method == 'POST':
-        pass
+        comment_form = CommentForm(request.POST)
+        comment_form.is_valid()
+        save_comment({'author':comment_form.cleaned_data['author'],
+                      'email':comment_form.cleaned_data['email'],
+                      'message':comment_form.cleaned_data['message'],
+                      'post':current_page,
+                      'delete':False
+                      })
     else:
-        comment_form = CommentForm({'author':'тут впишите свое имя',
+        comment_form = CommentForm({'author':'anonimous',
                                     'email':'your@email.com',
                                     'message':'добавьте комментарий'})
     return render_to_response('post.html', {
@@ -58,7 +66,8 @@ def cur_post(request, offset):
         'cloud_tags':cloud_tags,
         'meta':meta,
         'section_posts':section_posts,
-        'comment_form':comment_form
+        'comment_form':comment_form,
+        'comments':comments
         }, context_instance = RequestContext(request))
 
 def cur_tag(request, offset):

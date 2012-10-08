@@ -37,7 +37,17 @@
   <div class="lines"><img src="/static/images/line.gif" alt="line" /></div>
   <br>
   <h3>Комментарии: </h3>
+  {% for i in comments %}
+  {% if i.delete %}
+    <div>Комментарий был удален</div> 
+  {% else %}
+    {{ i.author }}<br />
+    {{ i.message }}<br />
+    {{ i.datatime }}<br />
+  {% endif %}
+  {% endfor %}
   <form method="POST">
+    {% csrf_token %}
     <table>
       <div class="comment0">{{ comment_form }}</div>       
       <tr>
