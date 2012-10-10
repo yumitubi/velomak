@@ -39,13 +39,17 @@
   <h3>Комментарии: </h3>
   {% for i in comments %}
   {% if i.delete %}
-    <div>Комментарий был удален</div> 
+    <br />
+    <div class="delete_comment">&nbsp;&nbsp;&nbsp;Комментарий был удален модератором</div> 
+    <hr />
   {% else %}
-    {{ i.author }}<br />
+    <br />
+    {{ i.datatime }} - {{ i.author }}<br />
     {{ i.message }}<br />
-    {{ i.datatime }}<br />
+    <hr />
   {% endif %}
   {% endfor %}
+  <h3>Добавьте свой комментарий:</h3>
   <form method="POST">
     {% csrf_token %}
     <table>

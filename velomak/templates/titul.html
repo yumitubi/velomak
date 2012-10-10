@@ -33,7 +33,7 @@
    {% endfor %}
  </div>
  {% get_comment_count for i as comment_count %}
- <div class="coments">{{ comment_count }} комментариев было оставлено на пост.</div>
+ <div class="coments">{{ i.get_count_comments }} комментариев было оставлено на пост.</div>
  <div class="lines"><img src="/static/images/line.gif" alt="line" /></div>
  {% endif %}
  {% endfor  %}

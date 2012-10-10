@@ -82,4 +82,3 @@ def get_comments(id_post):
     """
     return Comms.objects.filter(post__id=id_post)
 
-    

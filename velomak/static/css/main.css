@@ -2,6 +2,13 @@ li, ul, code {
     text-indent: 0px;
 }
 
+hr {
+    color: #ccc;
+    background-color: #ccc;
+    border:0px none;
+    height:1px;
+}
+
 #container {
     margin: 0;
     padding: 0;
@@ -109,6 +116,13 @@ li, ul, code {
     line-height: 29px;
     border:2px solid #aaa;
     margin-top: 1px;
+}
+
+.delete_comment {
+    background: #eee;
+    height: 30px;
+    line-height: 29px;
+    color: #fa8072;
 }
 
 .categories {

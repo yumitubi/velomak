@@ -42,9 +42,13 @@ class Posts(models.Model):
     not_publicate_main = models.BooleanField()
     section = models.ForeignKey(Section, blank=True, null=True)
 
-
     def __unicode__(self):
         return self.header
+
+    def get_count_comments(self):
+        """ return count comment for one post
+        """
+        return self.comms_set.count()
 
     class Meta:
         ordering = ["-date_pub"]
@@ -66,7 +70,7 @@ class Comms(models.Model):
     delete = models.BooleanField()
     
     def __unicode__(self):
-        return self.autor
+        return self.author
 
     class Meta:
         ordering = ["datatime"]
