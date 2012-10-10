@@ -1,6 +1,22 @@
 # -*- coding: utf-8 -*-
 
+import os, shutil
+from velomak.settings import DIR_CACHE
 from velomak.blog.models import Posts, Tags, Category, Section, Comms
+
+def clear_cache(directory):
+    """clear directory with cashe
+    """
+    if os.path.exists(directory):
+        list_dirs = os.listdir(directory)
+        try:
+            for direct in list_dirs:
+                shutil.rmtree(directory + direct)
+            return True
+        except:
+            return False
+    else:
+        return False
 
 def get_posts():
     """return posts
@@ -66,6 +82,10 @@ def save_comment(dicti):
     Arguments:
     - `dicti`: data in database
     """
+    # clear cache before add comment
+    # in database
+    if DIR_CACHE:
+        clear_cache(DIR_CACHE)
     add_note = Comms(author=dicti['author'],
                      email=dicti['email'],
                      post_id=int(dicti['post']),

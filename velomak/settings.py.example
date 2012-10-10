@@ -229,3 +229,6 @@ TINYMCE_DEFAULT_CONFIG={
     #
     #'file_browser_callback':'tinyDjangoBrowser'
 }
+
+# if use cash, this is path to dir cache
+DIR_CACHE = ''
