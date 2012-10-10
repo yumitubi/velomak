@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from forms import CommentForm
-from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section, save_comment, get_comments, get_count_comments
+from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section, save_comment, get_comments
 
 def blog(request):
     """
@@ -25,7 +25,6 @@ def blog(request):
         'cloud_tags':cloud_tags,
         'meta':meta,
         'section_posts':section_posts,
-        'get_count_comments':get_count_comments
         }, context_instance = RequestContext(request))
 
 def cur_post(request, offset):
