@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import random
-import Image, ImageDraw
+import Image, ImageDraw, ImageFont
+from velomak.settings import DIR_CAPCHA, DIR_BLOG
 
 class capcha(object):
     """Generate capcha for web-sites"""
@@ -29,16 +30,20 @@ class capcha(object):
         colors = ('green', 'red', 'blue', 'black')
         return random.choice(colors)
 
-    def gen_capcha(self, string):
+    def gen_capcha(self):
         """Generate capcha"""
         x = 7
         y = (5, 7, 9, 11, 13, 15, 17, 19)
         img = Image.new("RGB", (150, 30), (0, 0, 0))
         draw = ImageDraw.Draw(img)
         draw.rectangle((0, 0, 150, 30), fill="white")
+        string = self.gen_string()
+        font = ImageFont.truetype(DIR_BLOG + "/UbuntuMono-BI.ttf", 16)
         for char in string:
-            draw.text((x, random.choice(y)), char, fill=self.gen_color())
+            draw.text((x, random.choice(y)), char, fill=self.gen_color(), font=font)
             draw.line([self.rn(150), self.rn(30), self.rn(150), self.rn(30)], fill=self.gen_color())
             draw.line([self.rn(150), self.rn(30), self.rn(150), self.rn(30)], fill=self.gen_color())
             x += 30
-        img.show()
+        name_capcha = DIR_CAPCHA + '/' + string + '.png'
+        img.save(name_capcha)
+        return string + '.png'

@@ -53,7 +53,10 @@
   <form method="POST">
     {% csrf_token %}
     <table>
-      <div class="comment0">{{ comment_form }}</div>       
+      <div class="comment0">{{ comment_form }}</div>
+      <tr>
+	<td></td><td><img src="/static/images/capcha/{{ name_capcha }}" class="" alt="" /></td>
+      </tr>
       <tr>
 	<td></td><td><br /><input type="submit" value="Добавить комментарий" /></td>
       </tr>

@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from forms import CommentForm
 from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section, save_comment, get_comments
+import capcha
 
 def blog(request):
     """
@@ -45,6 +46,8 @@ def cur_post(request, offset):
     cloud_tags = get_tags()
     section_posts = get_sections()
     comments = get_comments(current_page)
+    cap = capcha.capcha()
+    name_capcha = cap.gen_capcha()
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         comment_form.is_valid()
@@ -52,12 +55,13 @@ def cur_post(request, offset):
                       'email':comment_form.cleaned_data['email'],
                       'message':comment_form.cleaned_data['message'],
                       'post':current_page,
-                      'delete':False
-                      })
+                      'delete':False,
+                       })
     else:
         comment_form = CommentForm({'author':'anonymous',
                                     'email':'your@email.com',
-                                    'message':'добавьте комментарий'})
+                                    'message':'добавьте комментарий',
+                                    'valid':'введите символы'})
     return render_to_response('post.html', {
         'current_page':current_page,
         'header_post':header_post,
@@ -67,7 +71,8 @@ def cur_post(request, offset):
         'meta':meta,
         'section_posts':section_posts,
         'comment_form':comment_form,
-        'comments':comments
+        'comments':comments,
+        'name_capcha':name_capcha
         }, context_instance = RequestContext(request))
 
 def cur_tag(request, offset):

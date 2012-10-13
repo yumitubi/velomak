@@ -232,3 +232,4 @@ TINYMCE_DEFAULT_CONFIG={
 
 # if use cash, this is path to dir cache
 DIR_CACHE = ''
+DIR_CAPCHA = rel('static/images/capcha')

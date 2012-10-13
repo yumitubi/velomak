@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import os, shutil
-from velomak.settings import DIR_CACHE
+import os, shutil, datetime
+from velomak.settings import DIR_CACHE, DIR_CAPCHA
 from velomak.blog.models import Posts, Tags, Category, Section, Comms
 
 def clear_cache(directory):
@@ -17,6 +17,19 @@ def clear_cache(directory):
             return False
     else:
         return False
+
+def clear_capcha(directory, expire):
+    """clear directory with capcha images"""
+    now = datetime.datetime.now()
+    if os.path.exists(DIR_CAPCHA):
+        try:
+            list_capcha_images = os.listdir(DIR_CAPCHA)
+            for image in list_capcha_images:
+                ctime_file = os.path.getctime(DIR_CACHE + image)
+                if now-ctime_file > expire:
+                    os.remove(DIR_CACHE + image)
+        except:
+            pass
 
 def get_posts():
     """return posts
@@ -92,6 +105,8 @@ def save_comment(dicti):
                      message=dicti['message'],
                      delete=dicti['delete']) 
     add_note.save()
+    #clear capcha images 
+    clear_capcha(DIR_CAPCHA, 30)
     return True
 
 def get_comments(id_post):
