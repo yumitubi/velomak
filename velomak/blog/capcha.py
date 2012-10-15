@@ -37,13 +37,14 @@ class capcha(object):
         img = Image.new("RGB", (150, 30), (0, 0, 0))
         draw = ImageDraw.Draw(img)
         draw.rectangle((0, 0, 150, 30), fill="white")
-        string = self.gen_string()
+        string_img = self.gen_string()
+        string_capcha = self.gen_string()
         font = ImageFont.truetype(DIR_BLOG + "/UbuntuMono-BI.ttf", 16)
-        for char in string:
+        for char in string_capcha:
             draw.text((x, random.choice(y)), char, fill=self.gen_color(), font=font)
             draw.line([self.rn(150), self.rn(30), self.rn(150), self.rn(30)], fill=self.gen_color())
             draw.line([self.rn(150), self.rn(30), self.rn(150), self.rn(30)], fill=self.gen_color())
             x += 30
-        name_capcha = DIR_CAPCHA + '/' + string + '.png'
+        name_capcha = DIR_CAPCHA + '/' + string_img + '.png'
         img.save(name_capcha)
-        return string + '.png'
+        return string_img + '.png', string_capcha

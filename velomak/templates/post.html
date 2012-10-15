@@ -50,6 +50,9 @@
   {% endif %}
   {% endfor %}
   <h3>Добавьте свой комментарий:</h3>
+  {% if valid_add_comment %}
+    <div id="some_id" class="delete_comment">Вы не правильно ввели код</div> 
+  {% endif %}
   <form method="POST">
     {% csrf_token %}
     <table>

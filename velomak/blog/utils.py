@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import os, shutil, datetime
+import os, shutil, datetime, time
 from velomak.settings import DIR_CACHE, DIR_CAPCHA
-from velomak.blog.models import Posts, Tags, Category, Section, Comms
+from velomak.blog.models import Posts, Tags, Category, Section, Comms, Capcha
 
 def clear_cache(directory):
     """clear directory with cashe
@@ -21,15 +21,24 @@ def clear_cache(directory):
 def clear_capcha(directory, expire):
     """clear directory with capcha images"""
     now = datetime.datetime.now()
-    if os.path.exists(DIR_CAPCHA):
-        try:
-            list_capcha_images = os.listdir(DIR_CAPCHA)
-            for image in list_capcha_images:
-                ctime_file = os.path.getctime(DIR_CACHE + image)
-                if now-ctime_file > expire:
-                    os.remove(DIR_CACHE + image)
-        except:
-            pass
+    now_sec = time.mktime(now.timetuple())
+    list_capcha_images = os.listdir(DIR_CAPCHA)
+    for image in list_capcha_images:
+        ctime_file = os.path.getctime(DIR_CAPCHA + '/' + image)
+        if now_sec-ctime_file > expire:
+            # TODO сделать более адекватную обработку
+            try:
+                os.remove(DIR_CAPCHA + '/' + image)
+            except:
+                pass
+
+def add_capcha_code(name_capcha, code_capcha):
+    """ add communicate in database 
+    between capcha image and capcha code
+    """
+    add_capcha_database = Capcha(picture_name=name_capcha,
+                                 capcha_code=code_capcha)
+    add_capcha_database.save()
 
 def get_posts():
     """return posts
@@ -99,15 +108,19 @@ def save_comment(dicti):
     # in database
     if DIR_CACHE:
         clear_cache(DIR_CACHE)
-    add_note = Comms(author=dicti['author'],
-                     email=dicti['email'],
-                     post_id=int(dicti['post']),
-                     message=dicti['message'],
-                     delete=dicti['delete']) 
-    add_note.save()
-    #clear capcha images 
-    clear_capcha(DIR_CAPCHA, 30)
-    return True
+    note = Capcha.objects.filter(capcha_code=dicti['capcha_code'])
+    if note:  
+        add_note = Comms(author=dicti['author'],
+                         email=dicti['email'],
+                         post_id=int(dicti['post']),
+                         message=dicti['message'],
+                         delete=dicti['delete']) 
+        add_note.save()
+        #clear capcha images 
+        clear_capcha(DIR_CAPCHA, 30)
+        return False
+    else:
+        return True
 
 def get_comments(id_post):
     """get all comments for one post

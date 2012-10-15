@@ -74,3 +74,11 @@ class Comms(models.Model):
 
     class Meta:
         ordering = ["datatime"]
+
+class Capcha(models.Model):
+    picture_name = models.CharField(blank=True, null=True, max_length=10)
+    capcha_code = models.CharField(blank=True, null=True, max_length=10)
+        
+    def __unicode__(self):
+        return self.picture_name
+
