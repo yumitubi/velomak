@@ -37,7 +37,8 @@ def add_capcha_code(name_capcha, code_capcha):
     between capcha image and capcha code
     """
     add_capcha_database = Capcha(picture_name=name_capcha,
-                                 capcha_code=code_capcha)
+                                 capcha_code=code_capcha,
+                                 use=False)
     add_capcha_database.save()
 
 def get_posts():
@@ -108,14 +109,19 @@ def save_comment(dicti):
     # in database
     if DIR_CACHE:
         clear_cache(DIR_CACHE)
-    note = Capcha.objects.filter(capcha_code=dicti['capcha_code'])
-    if note:  
+    try:
+        note = Capcha.objects.filter(capcha_code=dicti['capcha_code'])[0]
+    except:
+        note = False
+    if note and note.use == False:  
         add_note = Comms(author=dicti['author'],
                          email=dicti['email'],
                          post_id=int(dicti['post']),
                          message=dicti['message'],
                          delete=dicti['delete']) 
         add_note.save()
+        note.use = True
+        note.save()
         #clear capcha images 
         clear_capcha(DIR_CAPCHA, 30)
         return False

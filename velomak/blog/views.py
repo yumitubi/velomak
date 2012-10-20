@@ -52,19 +52,18 @@ def cur_post(request, offset):
     add_capcha_code(name_capcha, code_capcha)
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
-        comment_form.is_valid()
-        valid_add_comment = save_comment({'author':comment_form.cleaned_data['author'],
-                                          'email':comment_form.cleaned_data['email'],
-                                          'message':comment_form.cleaned_data['message'],
-                                          'post':current_page,
-                                          'delete':False,
-                                          'capcha_code':comment_form.cleaned_data['valid'],
-                                          })
+        if comment_form.is_valid():
+            valid_add_comment = save_comment({'author':comment_form.cleaned_data['author'],
+                                              'email':comment_form.cleaned_data['email'],
+                                              'message':comment_form.cleaned_data['message'],
+                                              'post':current_page,
+                                              'delete':False,
+                                              'capcha_code':comment_form.cleaned_data['valid'],
+                                              })
+            if valid_add_comment == False:
+                comment_form = CommentForm()
     else:
-        comment_form = CommentForm({'author':'anonymous',
-                                    'email':'your@email.com',
-                                    'message':'добавьте комментарий',
-                                    'valid':'введите символы'})
+        comment_form = CommentForm()
     return render_to_response('post.html', {
         'current_page':current_page,
         'header_post':header_post,
