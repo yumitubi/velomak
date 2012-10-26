@@ -23,7 +23,7 @@
  {% autopaginate header_list 7 %}
  {% for i in header_list %}
  {% if i.flag_enabled %}
- <a class="header_post" href="/{{ i.id }}/"><h3>{{ i.header }}</h3></a>      
+ <div><a class="header_post" href="/{{ i.id }}/"><h3>{{ i.header }}</h3></a></div>      
  <div class="prepost"> {{ i.prepost }}</div>
  <p></p>
  <div class="date">{{ i.date_pub }}</div>

@@ -133,6 +133,43 @@ hr {
     margin-top: 1px;
 }
 
+.prev {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    margin-top: 1px;
+}
+
+.next {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    margin-top: 1px;
+}
+
+.page {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    margin-top: 1px;
+}
+
+.current.page {
+    background: #777;
+    height: 30px;
+    line-height: 29px;
+    margin-top: 1px;
+    color: #fff;
+}
+
+.disabled .next {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    border:2px solid #aaa;
+    margin-top: 1px;
+}
+
 #tags_right {
     font-family: "Georgia", "Times", serif;
     background: #eee;
@@ -157,6 +194,14 @@ hr {
 .prepost {
     text-align: justify;
     text-indent: 25px;
+}
+
+.header_post a:link {
+    color: DimGray;
+}
+
+.prepost a:link {
+    text-decoration: underline;
 }
 
 .footer_post {
@@ -188,6 +233,14 @@ a {
 
 body a:hover {
     color: #336699;
+}
+
+#post a:link {
+    color: DimGray;
+}
+
+#post a:hover {
+    color: DarkGray;
 }
 
 a:hover.tags {
@@ -236,8 +289,6 @@ a:hover.tags {
 
 .paginate {
     text-align: center;
-    font-family: "Georgia", "Times", serif;
-    font-size: 1.5em;
     vertical-align: center;
 }
 
