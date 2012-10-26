@@ -168,15 +168,21 @@ def cur_section(request, offset):
             'current_page':current_page
             }, context_instance = RequestContext(request))
     
-def about(request):
-    """Возвращает страницу About
+def search(request):
+    """return results for search 
+    Arguments:
+    - `request`:
     """
     meta = "блог le087 emacs linux python django"
-    current_page = "Об авторе"
-    section_posts = get_posts_section()
-    return render_to_response('about.html', {
+    current_page = "Результаты поиска"
+    section_posts = get_sections()
+    cloud_tags = get_tags()
+    categ_obr = get_categs()
+    return render_to_response('search.html', {
         'current_page':current_page,
         'meta':meta,
-        'section_posts':section_posts
+        'section_posts':section_posts,
+        'categ_obr':categ_obr,
+        'cloud_tags':cloud_tags
         }, context_instance = RequestContext(request))
-    
+ 

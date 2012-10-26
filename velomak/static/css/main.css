@@ -76,6 +76,15 @@ hr {
     text-shadow: 1px 1px #aaa;  
 }
 
+#search {
+    float:right;
+    width:240px;
+    padding: 2px 2px 2px 2px;
+    height: 31px;
+    /* margin-left:40px; */
+    line-height:32px;
+}
+
 #rss {
     float:right;
     width:31px;

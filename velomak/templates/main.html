@@ -8,6 +8,7 @@
     <title>le087's blog - {{ current_page }}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     {% block meta %}{% endblock %}
+    <link rel="alternate" type="application/rss+xml" title="Подписка!" href="/feed" />
   </head>
   <body topmargin="0">
     <div id="container">
@@ -21,9 +22,12 @@
       </div>
       <div id="top_menu">
 	{% block top_menu%}{% endblock %}
-	<div id="rss">
-	  <a href="/feed/"><img src="/static/images/rss.png" id="rss" alt="RSS" /></a>
-	</div>
+	<div id="search">
+	  <form method="POST" action="/search/">
+	    {% csrf_token %}
+	    <input type="text" name="search" value="" /><input type="submit" name="btn_search" value="Найти" />
+	   </form>
+	</div> 
       </div>
       <div id="main">
 	{% block body %}{% endblock %}
