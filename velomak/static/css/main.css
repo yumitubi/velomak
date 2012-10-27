@@ -213,7 +213,15 @@ hr {
     color: DimGray;
 }
 
+.header_post a:visited {
+    color: DimGray;
+}
+
 .prepost a:link {
+    text-decoration: underline;
+}
+
+.prepost a:visited {
     text-decoration: underline;
 }
 
@@ -249,6 +257,10 @@ body a:hover {
 }
 
 #post a:link {
+    color: DimGray;
+}
+
+#post a:visited {
     color: DimGray;
 }
 
