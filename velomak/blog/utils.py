@@ -3,6 +3,7 @@
 import os, shutil, datetime, time
 from velomak.settings import DIR_CACHE, DIR_CAPCHA
 from velomak.blog.models import Posts, Tags, Category, Section, Comms, Capcha
+from django.db.models import Q
 
 def clear_cache(directory):
     """clear directory with cashe
@@ -136,3 +137,13 @@ def get_comments(id_post):
     """
     return Comms.objects.filter(post__id=id_post)
 
+def search_in_db(query):
+    """return list of objects
+    
+    Arguments:
+    - `query`: query in search field
+    """
+    return Posts.objects.filter(Q(header__icontains=query) |
+                                Q(post__icontains=query) |
+                                Q(prepost__icontains=query) |
+                                Q(tags__tag__icontains=query))

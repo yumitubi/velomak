@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from forms import CommentForm
-from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section, save_comment, get_comments, add_capcha_code
+from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section, save_comment, get_comments, add_capcha_code, search_in_db
 import capcha
 
 def blog(request):
@@ -178,11 +178,16 @@ def search(request):
     section_posts = get_sections()
     cloud_tags = get_tags()
     categ_obr = get_categs()
-    return render_to_response('search.html', {
+    if request.method == 'POST':
+        header_list = list(set(search_in_db(request.POST['search'])))
+    else:
+        header_list = []
+    return render_to_response('titul.html', {
         'current_page':current_page,
         'meta':meta,
         'section_posts':section_posts,
         'categ_obr':categ_obr,
-        'cloud_tags':cloud_tags
+        'cloud_tags':cloud_tags,
+        'header_list':header_list
         }, context_instance = RequestContext(request))
  
