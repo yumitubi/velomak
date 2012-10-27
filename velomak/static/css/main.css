@@ -68,7 +68,7 @@ hr {
 }
 
 .item_menu {
-    width:100px;
+    width:115px;
     float:left;
     height: 40px;
     margin-left:40px;
@@ -78,11 +78,15 @@ hr {
 
 #search {
     float:right;
-    width:240px;
+    width:250px;
     padding: 2px 2px 2px 2px;
     height: 31px;
     /* margin-left:40px; */
     line-height:32px;
+}
+
+#top_search {
+    width:150px;
 }
 
 #rss {
