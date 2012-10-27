@@ -14,7 +14,6 @@ hr {
     padding: 0;
     font-family: Verdana, "Lucida Grande", Tahoma, Helveti, sans-serif;
     color: #000;
-    background: #fff url("/static/images/top2.png") no-repeat center top;
 }
 
 #header {
@@ -37,7 +36,7 @@ hr {
     font-weight: 400;
     line-height: normal;
     border: medium none currentColor;
-    text-shadow: 1px 1px #aaa;  
+    text-shadow: 1px 1px 4px white, 0 0 0.5em white;  
 }
 
 #site_slogan {
@@ -52,7 +51,7 @@ hr {
     font-weight: 400;
     line-height: normal;
     border: medium none currentColor;
-    text-shadow: 1px 1px #aaa; 
+    text-shadow: 1px 1px 4px white, 0 0 0.5em white;  
 }
 
 #top_menu {
@@ -250,6 +249,10 @@ hr {
 a {
     color: #000;
     text-decoration: none;
+}
+
+body {
+    background: #fff url("/static/images/background.png") no-repeat center top;
 }
 
 body a:hover {
