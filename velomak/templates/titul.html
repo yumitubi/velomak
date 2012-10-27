@@ -22,7 +22,7 @@
  {% autoescape off %}
    {% autopaginate header_list 7 %}
      {% if not header_list %}
-       <p>Постов не найдено</p>
+       <div class="delete_comment"><p>&nbsp;&nbsp;Постов не найдено</p></div>
      {% else %}
        {% for i in header_list %}
          {% if i.flag_enabled %}

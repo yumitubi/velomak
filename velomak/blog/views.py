@@ -92,8 +92,7 @@ def cur_tag(request, offset):
     categ_obr = get_categs()
     cloud_tags = get_tags()
     section_posts = get_sections()
-    if header_list:
-        return render_to_response('titul.html', {
+    return render_to_response('titul.html', {
             'current_page':current_page,
             'header_list':header_list,
             'tags_obr':tags_obr,
@@ -101,11 +100,6 @@ def cur_tag(request, offset):
             'cloud_tags':cloud_tags,
             'meta':meta,
             'section_posts':section_posts 
-            }, context_instance = RequestContext(request))
-    else:
-        current_page = u"Об авторе"
-        return render_to_response('about.html', {
-            'current_page':current_page
             }, context_instance = RequestContext(request))
 
 def cur_categ(request, offset):
@@ -120,26 +114,22 @@ def cur_categ(request, offset):
     header_list = get_posts_categ(offset_without_earth)
     # categ_obr - получаем категории, которые принадлежат
     # только к определенной категории
-    if header_list[0].section: 
+    if header_list and header_list[0].section: 
         categ_obr = get_categs_section(header_list[0].section) 
+    else:
+        categ_obr = get_categs()
     tags_obr = get_tags()
     cloud_tags = get_tags()
     section_posts = get_sections()
-    if header_list:
-        return render_to_response('titul.html', {
-            'current_page':current_page,
-            'header_list':header_list,
-            'categ_obr':categ_obr,
-            'tags_obr':tags_obr,
-            'cloud_tags':cloud_tags,
-            'meta':meta,
-            'section_posts':section_posts 
-            }, context_instance = RequestContext(request))
-    else:
-        current_page = "Об авторе"
-        return render_to_response('about.html', {
-            'current_page':current_page
-            }, context_instance = RequestContext(request))
+    return render_to_response('titul.html', {
+        'current_page':current_page,
+        'header_list':header_list,
+        'categ_obr':categ_obr,
+        'tags_obr':tags_obr,
+        'cloud_tags':cloud_tags,
+        'meta':meta,
+        'section_posts':section_posts 
+        }, context_instance = RequestContext(request))
 
 def cur_section(request, offset):
     """ Обображает материалы для конкретной секции
@@ -152,21 +142,15 @@ def cur_section(request, offset):
     tags_obr = get_tags()
     cloud_tags = get_tags()
     section_posts = get_sections()
-    if header_list:
-        return render_to_response('titul.html', {
-            'current_page':current_page,
-            'header_list':header_list,
-            'categ_obr':categ_obr,
-            'tags_obr':tags_obr,
-            'cloud_tags':cloud_tags,
-            'meta':meta,
-            'section_posts':section_posts
-            }, context_instance = RequestContext(request))
-    else:
-        current_page = "Об авторе"
-        return render_to_response('about.html', {
-            'current_page':current_page
-            }, context_instance = RequestContext(request))
+    return render_to_response('titul.html', {
+        'current_page':current_page,
+        'header_list':header_list,
+        'categ_obr':categ_obr,
+        'tags_obr':tags_obr,
+        'cloud_tags':cloud_tags,
+        'meta':meta,
+        'section_posts':section_posts
+        }, context_instance = RequestContext(request))
     
 def search(request):
     """return results for search 
