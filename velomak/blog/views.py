@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.template import RequestContext
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.http import Http404
 from django.shortcuts import render_to_response
 from forms import CommentForm
 from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ, get_posts_tag, get_tag_to_post, get_post, get_posts_section, get_sections, get_categs_section, save_comment, get_comments, add_capcha_code, search_in_db
 import capcha
+
 
 def blog(request):
     """
@@ -37,12 +37,16 @@ def cur_post(request, offset):
     try:
         current_page = int(offset)
     except:
-        # Если запрашивается некорректный номер страницы,
-        # то перебрасываем на заглавную
-        HttpResponseRedirect(reverse(u'velomak-blog'))
+        raise Http404
     valid_add_comment = False
     meta = tags_obr = get_tag_to_post(offset)
     header_post = get_post(current_page)
+    if header_post == False:
+        current_page = 'Страница не найдена'
+        return render_to_response('404.html', {
+                'current_page':current_page,
+                'meta':meta,
+                }, context_instance = RequestContext(request))
     categ_obr = get_categs()
     cloud_tags = get_tags()
     section_posts = get_sections()

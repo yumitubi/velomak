@@ -50,7 +50,10 @@ def get_posts():
 def get_post(url_post):
     """return post
     """
-    return Posts.objects.get(id = url_post)
+    try:
+        return Posts.objects.get(id = url_post)
+    except:
+        return False
 
 def get_tags():
     """return tags list
@@ -65,8 +68,11 @@ def get_posts_tag(url_tag):
 def get_tag_to_post(id_post):
     """return tags for one post
     """
-    tags = Posts.objects.get(id=id_post)
-    list_tags =  [t.tag for t in tags.tags.all()]
+    try:
+        tags = Posts.objects.get(id=id_post)
+        list_tags =  [t.tag for t in tags.tags.all()]
+    except:
+        list_tags = []
     return list_tags
 
 def get_posts_categ(categ):
