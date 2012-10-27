@@ -35,19 +35,23 @@
   </div>
   <div class="lines"><img src="/static/images/line.gif" alt="line" /></div>
   <br>
-  <h3>Комментарии: </h3>
-  {% for i in comments %}
-  {% if i.delete %}
-    <br />
-    <div class="delete_comment">&nbsp;&nbsp;&nbsp;Комментарий был удален модератором</div> 
-    <hr />
+  {% if comments %}
+    <h3>Комментарии: </h3>
+    {% for i in comments %}
+    {% if i.delete %}
+      <br />
+      <div class="delete_comment">&nbsp;&nbsp;&nbsp;Комментарий был удален модератором</div> 
+      <hr />
+    {% else %}
+      <br />
+      {{ i.datatime }} - {{ i.author }}<br />
+      {{ i.message }}<br />
+      <hr />
+    {% endif %}
+    {% endfor %}
   {% else %}
-    <br />
-    {{ i.datatime }} - {{ i.author }}<br />
-    {{ i.message }}<br />
-    <hr />
+    <h4 align="center">Нет комментариев.</h4>
   {% endif %}
-  {% endfor %}
   <h3>Добавьте свой комментарий:</h3>
   {% if valid_add_comment %}
     <div id="some_id" class="delete_comment">Вы не правильно ввели код</div> 
