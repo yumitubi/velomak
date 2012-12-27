@@ -35,7 +35,7 @@ class Posts(models.Model):
     header = models.TextField( blank = True )
     post = tinymce_models.HTMLField( blank = True )
     prepost = tinymce_models.HTMLField( blank = True )
-    date_pub = models.DateField( auto_now_add = True )
+    date_pub = models.DateTimeField()
     tags = models.ManyToManyField(Tags)
     categories = models.ForeignKey(Category)
     flag_enabled = models.BooleanField()
