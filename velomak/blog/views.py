@@ -64,6 +64,11 @@ def cur_post(request, offset):
                                               'delete':False,
                                               'capcha_code':comment_form.cleaned_data['valid'],
                                               })
+            from django.core.mail import send_mail
+            send_mail(comment_form.cleaned_data['author'], 
+                      'Новый комментарий на сайте: \n\n' + comment_form.cleaned_data['message'], 
+                      'mak.tomilov@yandex.ru', ['mak.tomilov@gmail.com'], 
+                      fail_silently=False)
             if valid_add_comment == False:
                 comment_form = CommentForm()
     else:
