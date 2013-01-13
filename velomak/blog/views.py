@@ -66,7 +66,7 @@ def cur_post(request, offset):
                                               })
             from django.core.mail import send_mail
             send_mail(comment_form.cleaned_data['author'], 
-                      'Новый комментарий на сайте: \n\n' + comment_form.cleaned_data['message'], 
+                      u'Новый комментарий на сайте: \n\n' + comment_form.cleaned_data['message'], 
                       'mak.tomilov@yandex.ru', ['mak.tomilov@gmail.com'], 
                       fail_silently=False)
             if valid_add_comment == False:
