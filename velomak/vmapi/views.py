@@ -1,34 +1,37 @@
 # -*- coding: utf-8 -*-
 
-# from django.template import RequestContext
-from django.http import HttpResponse
-# from django.shortcuts import render_to_response
-from velomak.blog.utils import get_tags, get_categs
-import json
+from django.http import HttpResponse, Http404
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+# from rest_framework.parsers import JSONParser
+from velomak.blog.models import Category
+from velomak.vmapi.serializers import CategSerializer
+
+class JSONResponse(HttpResponse):
+
+    def __init__(self, data, **kwargs):
+        """
+        
+        Arguments:
+        - `self`:
+        - `data`:
+        - `**kwargs`:
+        """
+        content = JSONRenderer().render(data)
+        kwargs['content_type'] = 'application/json'
+        super(JSONResponse, self.__init__(content, **kwargs))
 
 
-def api_tags(request):
-    """return list tags
+@csrf_exempt
+def categ_list(request):
+    """
+    Возвращает список всех категорий
 
     Arguments:
     - `request`:
     """
-    tags = get_tags()
-    return HttpResponse(json.dumps(list(tags), 
-                                   ensure_ascii=False, 
-                                   encoding="utf-8"),
-                        content_type="application/json")
-
-
-def api_categs(request):
-    """return list categories
-    
-    Arguments:
-    - `request`:
-    """
-    categs = get_categs()
-    return HttpResponse(json.dumps([c.categ for c in categs], 
-                                   ensure_ascii=False, 
-                                   encoding="utf-8"),
-                        content_type="application/json")
-    
+    if request.method == 'GET':
+        categs = Category.objects.all()
+        serializer = CategSerializer(categs, many=True)
+        return JSONResponse(serializer.data)
+    return Http404

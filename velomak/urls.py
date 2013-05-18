@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import patterns, include, url
 from velomak.blog.views import blog, cur_post, cur_tag, cur_categ, cur_section, search
-from velomak.vmapi.views import api_tags, api_categs
+# from velomak.vmapi.views import categ_list
 from django.conf import settings
 from blog.feed import RSSFeed
 from django.contrib import admin
@@ -16,8 +16,8 @@ urlpatterns = patterns('',
     ('^search/$', search),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^feed/?$', RSSFeed()),
-    ('^api_tags/$', api_tags),
-    ('^api_categs/$', api_categs),
+    # ('^api_tags/$', api_tags),
+    # ('^api_categs/$', api_categs),
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),
@@ -28,6 +28,6 @@ urlpatterns = patterns('',
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^tinymce/', include('tinymce.urls')),
     # API REST
-    url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^', include('vmapi.urls')),
 )
 
