@@ -53,8 +53,7 @@ def cur_post(request, offset):
     comments = get_comments(current_page)
     cap = capcha.capcha()
     name_capcha, code_capcha = cap.gen_capcha()
-    if name_capcha and code_capcha:
-        add_capcha_code(name_capcha, code_capcha)
+    add_capcha_code(name_capcha, code_capcha)
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():

@@ -62,11 +62,7 @@
     <table>
       <div class="comment0">{{ comment_form }}</div>
       <tr>
-	{% if name_capcha %}
 	<td></td><td><img src="/static/images/capcha/{{ name_capcha }}" class="" alt="" /></td>
-	{% else %}
-	<td></td><td>Невозможно создать изображение!</td>
-	{% endif %}
       </tr>
       <tr>
 	<td></td><td><br /><input type="submit" value="Добавить комментарий" /></td>
