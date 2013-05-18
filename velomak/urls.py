@@ -27,5 +27,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^tinymce/', include('tinymce.urls')),
+    # API REST
+    url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
 )
 

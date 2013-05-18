@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'tinymce',
     'south',
+    'rest_framework',
 )
 
 # special for django 1.5
@@ -233,6 +234,21 @@ TINYMCE_DEFAULT_CONFIG={
     #'file_browser_callback':'tinyDjangoBrowser'
 }
 
+# REST
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.HyperlinkedModelSerializer',
+
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
 # if use cash, this is path to dir cache
 DIR_CACHE = ''
 DIR_CAPCHA = rel('static/images/capcha')
+DIR_BLOG = rel('blog')
