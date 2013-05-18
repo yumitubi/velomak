@@ -46,5 +46,8 @@ class capcha(object):
             draw.line([self.rn(150), self.rn(30), self.rn(150), self.rn(30)], fill=self.gen_color())
             x += 30
         name_capcha = DIR_CAPCHA + '/' + string_img + '.png'
-        img.save(name_capcha)
-        return string_img + '.png', string_capcha
+        try:
+            img.save(name_capcha)
+            return string_img + '.png', string_capcha
+        except IOError:
+            return False, False
