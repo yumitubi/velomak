@@ -22,9 +22,6 @@ class JSONResponse(HttpResponse):
 def categ_list(request):
     """
     Возвращает список всех категорий
-
-    Arguments:
-    - `request`:
     """
     if request.method == 'GET':
         categs = Category.objects.all()
