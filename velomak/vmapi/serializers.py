@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 
 
-from django.forms import widgets
 from rest_framework import serializers
-from velomak.blog.models import Posts, Tags, Category, Comms, Capcha
+from velomak.blog.models import Category, Tags
 
 
 class CategSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('id', 'categ', 'enabled', 'weight', 'section')
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tags
+        fields = ('id', 'tag')
