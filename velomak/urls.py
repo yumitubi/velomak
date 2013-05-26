@@ -16,9 +16,6 @@ urlpatterns = patterns('',
     ('^search/$', search),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^feed/?$', RSSFeed()),
-    # ('^api_tags/$', api_tags),
-    # ('^api_categs/$', api_categs),
-    # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -28,6 +25,7 @@ urlpatterns = patterns('',
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^tinymce/', include('tinymce.urls')),
     # API REST
+    url(r'^', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^', include('vmapi.urls')),
 )
 

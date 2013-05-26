@@ -2,19 +2,18 @@
 
 
 from django.http import Http404
-# from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view
-# from rest_framework import status
+from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.response import Response
-# from rest_framework.parsers import JSONParser
+from rest_framework.renderers import UnicodeJSONRenderer
 from velomak.blog.models import Category, Tags
 from velomak.vmapi.serializers import CategSerializer, TagSerializer
 
 
 @api_view(['GET', 'POST'])
+@renderer_classes((UnicodeJSONRenderer, ))
 def categ_list(request):
     """
-    Возвращает список всех категорий
+    return list all categs
     """
     if request.method == 'GET':
         categs = Category.objects.all()
@@ -24,9 +23,10 @@ def categ_list(request):
 
 
 @api_view(['GET', 'POST'])
+@renderer_classes((UnicodeJSONRenderer, ))
 def tag_list(request):
     """
-    Возвращает список все тагов
+    returt list all tags
     """
     if request.method == 'GET':
         tags = Tags.objects.all()
