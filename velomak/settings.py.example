@@ -131,7 +131,6 @@ INSTALLED_APPS = (
     # 'django.contrib.messages',
     # 'django.contrib.staticfiles',
     'velomak.blog',
-    'velomak.southtut',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -237,3 +236,4 @@ TINYMCE_DEFAULT_CONFIG={
 # if use cash, this is path to dir cache
 DIR_CACHE = ''
 DIR_CAPCHA = rel('static/images/capcha')
+DIR_BLOG = rel('blog')
