@@ -1,5 +1,5 @@
 # Django settings for velomak project.
-import os, sys
+import os
 
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
@@ -237,3 +237,4 @@ TINYMCE_DEFAULT_CONFIG={
 DIR_CACHE = ''
 DIR_CAPCHA = rel('static/images/capcha')
 DIR_BLOG = rel('blog')
+
