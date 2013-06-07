@@ -5,6 +5,7 @@ env/
 *.swp
 *.py[co]
 *.sqlite
+*.png
 settings.py
 bin/
 include/

@@ -1,5 +1,6 @@
 {% extends "main.html" %}
 {% load space_in_earth %}
+{% load markitup_tags %}
 
 {% block meta %}
 <meta name="keywords" content="le087 blog {% for m in  meta %}{{ m }} {% endfor %}">
@@ -46,7 +47,7 @@
     {% else %}
       <br />
       {{ i.datatime }} - {{ i.author }}<br />
-      {{ i.message }}<br />
+      {{ i.message|render_markup }}<br />
       <hr />
     {% endif %}
     {% endfor %}
@@ -54,6 +55,7 @@
     <h4 align="center">Нет комментариев.</h4>
   {% endif %}
   <h3>Добавьте свой комментарий:</h3>
+<div align="center">Для форматирования текста используйте <a href="http://ru.wikipedia.org/wiki/Markdown">markdown</a></div><br /> 
   {% if valid_add_comment %}
     <div id="some_id" class="delete_comment">Вы не правильно ввели код</div> 
   {% endif %}
