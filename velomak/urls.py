@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     ('^categories/([\d\w\-_]+)/$', cur_categ),
     ('^section/([\d\w\-_]+)/$', cur_section),
     ('^search/$', search),
-    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     url(r'^feed/?$', RSSFeed()),
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
@@ -22,7 +22,6 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-    (r'^comments/', include('django.contrib.comments.urls')),
     (r'^tinymce/', include('tinymce.urls')),
 )
 

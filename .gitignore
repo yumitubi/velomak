@@ -11,3 +11,4 @@ include/
 lib/
 local/
 .ropeproject/
+velomak/templates/metrika.html

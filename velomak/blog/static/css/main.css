@@ -1,0 +1,352 @@
+li, ul, code {
+    text-indent: 0px;
+}
+
+hr {
+    color: #ccc;
+    background-color: #ccc;
+    border:0px none;
+    height:1px;
+}
+
+#container {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, "Lucida Grande", Tahoma, Helveti, sans-serif;
+    color: #000;
+}
+
+#header {
+    width: 1010px;
+    height: 150px;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+#name_site {
+    display: table-cell;
+    vertical-align: bottom;
+    width: 1010px;
+    height: 92px;
+    text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 3em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: medium none currentColor;
+    text-shadow: 1px 1px 4px white, 0 0 0.5em white;  
+}
+
+#site_slogan {
+    vertical-align: top;
+    width: 1010px;
+    height: 20px;
+    text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.0em;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: medium none currentColor;
+    text-shadow: 1px 1px 4px white, 0 0 0.5em white;  
+}
+
+#top_menu {
+    width: 1010px;
+    height: 40px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.2em;
+    vertical-align: middle;
+    background: #eee;
+    border:2px solid #aaa;
+}
+
+.item_menu {
+    width:115px;
+    float:left;
+    height: 40px;
+    margin-left:40px;
+    line-height:39px;
+    text-shadow: 1px 1px #aaa;  
+}
+
+#search {
+    float:right;
+    width:250px;
+    padding: 2px 2px 2px 2px;
+    height: 31px;
+    /* margin-left:40px; */
+    line-height:32px;
+}
+
+#top_search {
+    width:150px;
+}
+
+/* #rss { */
+/*     float:right; */
+/*     width:31px; */
+/*     padding: 2px 2px 2px 2px; */
+/*     height: 31px; */
+/*     margin-left:40px; */
+/*     line-height:39px; */
+/* } */
+
+#top_menu div:first-child{ 
+    margin-left:0px;
+}
+
+#main {
+    width: 1010px;
+    margin: 0 auto;
+    font-family: "Georgia", "Times", serif;
+}
+
+#post {
+    width: 785px;
+    padding: 0px 10px 0px 0px;
+    float: left;
+}
+
+#right_block {
+    width: 210px;
+    margin: right;
+    float: left;
+    text-align: center;
+    padding-left: 5px;
+    margin-top: 18px;
+}
+
+#categories {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    border:2px solid #aaa;
+    margin-top: 1px;
+}
+
+.delete_comment {
+    background: #eee;
+    height: 30px;
+    line-height: 29px;
+    color: #fa8072;
+}
+
+.categories {
+    background: #eee;
+    height: 30px;
+    line-height: 29px;
+    border:2px solid #aaa;
+    margin-top: 1px;
+}
+
+.prev {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    margin-top: 1px;
+}
+
+.next {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    margin-top: 1px;
+}
+
+.page {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    margin-top: 1px;
+}
+
+.current.page {
+    background: #777;
+    height: 30px;
+    line-height: 29px;
+    margin-top: 1px;
+    color: #fff;
+}
+
+.disabled .next {
+    background: #ddd;
+    height: 30px;
+    line-height: 29px;
+    border:2px solid #aaa;
+    margin-top: 1px;
+}
+
+#tags_right {
+    font-family: "Georgia", "Times", serif;
+    background: #eee;
+    height: 30px;
+    line-height:29px;
+    border:2px solid #aaa;
+    margin-top: 1px;
+    background: #ddd;
+}
+
+.tag_right {
+    font-family: "Georgia", "Times", serif;
+    background: #eee;
+    border:2px solid #aaa;
+    margin-top: 1px;
+}
+
+.header_post {
+    text-align: center;
+}
+
+.prepost {
+    text-align: justify;
+    text-indent: 25px;
+}
+
+.header_post a:link {
+    color: DimGray;
+}
+
+.header_post a:visited {
+    color: DimGray;
+}
+
+.prepost a:link {
+    text-decoration: underline;
+}
+
+.prepost a:visited {
+    text-decoration: underline;
+}
+
+.footer_post {
+    width: 785px;
+}
+
+.date {
+    text-align: left;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.0em;
+    vertical-align: center;
+    width: 350px;
+    float: left;
+}
+
+.tags {
+    text-align: right;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.0em;
+    width: 430px;
+    padding: 0px 5px 0px 0px;
+    float: left;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+body {
+    background: #fff url("/static/images/background.png") no-repeat center top;
+}
+
+body a:hover {
+    color: #336699;
+}
+
+#post a:link {
+    color: DimGray;
+}
+
+#post a:visited {
+    color: DimGray;
+}
+
+#post a:hover {
+    color: DarkGray;
+}
+
+a:hover.tags {
+    text-align: right;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.0em;
+    vertical-align: center;
+    color: gray;
+}
+
+.coments {
+    text-align: left;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.0em;
+    vertical-align: center;
+}
+
+#right_menu {
+    font-family: "Georgia", "Times", serif;
+    text-align: right;
+    padding-left: 15px;
+    vertical-align: top;
+    font-size: 1.2em;
+    padding-top: 85px;
+}
+
+#tags {
+    font-family: "Georgia", "Times", serif;
+    text-align: center;
+    vertical-align: top;
+    font-size: 0.9em;
+}
+
+#cprg {
+    text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 0.9em;
+    height: 35px;
+    background: #ddd;
+    line-height:35px;
+}
+
+.lines {
+    text-align: center;
+}
+
+.paginate {
+    text-align: center;
+    vertical-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.8em;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: normal
+}
+
+.comments2 {
+    text-align: right;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.2em;
+    vertical-align: center;
+}
+
+.comments {
+    text-align: left;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.2em;
+    vertical-align: center;
+}
+
+.comments0 {
+    text-align: center;
+    font-family: "Georgia", "Times", serif;
+    font-size: 1.5em;
+    vertical-align: center;
+}
