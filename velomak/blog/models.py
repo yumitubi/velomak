@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from tinymce import models as tinymce_models
+# from markitup.fields import MarkupField
 
 class Section(models.Model):
     section = models.CharField(blank=True, null=True, max_length=64, unique=True)
@@ -33,6 +34,8 @@ class Tags(models.Model):
 
 class Posts(models.Model):
     header = models.TextField( blank = True )
+    # post = MarkupField( blank = True )
+    # prepost = MarkupField( blank = True )
     post = tinymce_models.HTMLField( blank = True )
     prepost = tinymce_models.HTMLField( blank = True )
     date_pub = models.DateTimeField()
