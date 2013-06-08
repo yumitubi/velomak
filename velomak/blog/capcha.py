@@ -33,13 +33,19 @@ class capcha(object):
     def gen_capcha(self):
         """Generate capcha"""
         x = 7
-        y = (5, 7, 9, 11, 13, 15, 17, 19)
+        y = (5, 7, 9, 11, 13, 15)
         img = Image.new("RGB", (150, 30), (0, 0, 0))
         draw = ImageDraw.Draw(img)
         draw.rectangle((0, 0, 150, 30), fill="white")
+        for i in range(20):
+            x_ellips = self.rn(150)
+            y_ellips = self.rn(30)
+            draw.ellipse((x_ellips, y_ellips, x_ellips+8, y_ellips+8), 
+                         fill=(170, 170, 170, 100),
+                         outline=(140, 140, 140, 100))
         string_img = self.gen_string()
         string_capcha = self.gen_string()
-        font = ImageFont.truetype(DIR_BLOG + "/UbuntuMono-BI.ttf", 16)
+        font = ImageFont.truetype(DIR_BLOG + "/UbuntuMono-BI.ttf", 18)
         for char in string_capcha:
             draw.text((x, random.choice(y)), char, fill=self.gen_color(), font=font)
             draw.line([self.rn(150), self.rn(30), self.rn(150), self.rn(30)], fill=self.gen_color())
