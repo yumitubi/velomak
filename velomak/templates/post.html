@@ -2,6 +2,12 @@
 {% load space_in_earth %}
 {% load markitup_tags %}
 
+{% block js-script %}
+<script type="text/javascript" src="/static/js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="/static/js/settings.js"></script>
+<script type="text/javascript" src="/static/js/refresh_capcha.js"></script>
+{% endblock %}
+
 {% block meta %}
 <meta name="keywords" content="le087 blog {% for m in  meta %}{{ m }} {% endfor %}">
 {% endblock %}
@@ -64,10 +70,16 @@
     <table>
       <div class="comment0">{{ comment_form }}</div>
       <tr>
-	<td></td><td><img src="/static/images/capcha/{{ name_capcha }}" class="" alt="" /></td>
+	<td></td><td>
+	  <img src="/static/images/capcha/{{ name_capcha }}" id="capcha_img" alt="" /><br />
+	  <input type="button" id="refresh_capcha" name="refresh_capcha" value="Получить новый код!"/>
+	</td>
       </tr>
       <tr>
-	<td></td><td><br /><input type="submit" value="Добавить комментарий" /></td>
+	<td></td><td>
+	  <br />
+	  <input type="submit" value="✔&nbsp;&nbsp; Добавить комментарий" class="add_comment_btn" />
+	</td>
       </tr>
     </table>
   </form>

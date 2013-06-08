@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.template import RequestContext
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render_to_response
 from forms import CommentForm
 from velomak.blog.utils import get_posts, get_tags, get_categs, get_posts_categ
@@ -8,6 +8,7 @@ from velomak.blog.utils import get_posts_tag, get_tag_to_post, get_post
 from velomak.blog.utils import get_posts_section, get_sections
 from velomak.blog.utils import save_comment, get_comments, add_capcha_code
 from velomak.blog.utils import search_in_db, get_categs_section
+import json
 import capcha
 
 
@@ -193,3 +194,17 @@ def search(request):
                               'cloud_tags': cloud_tags,
                               'header_list': header_list
                               }, context_instance=RequestContext(request))
+
+
+#------------------------------------------------------------
+# Ajax 
+#------------------------------------------------------------
+
+def ajax_get_capcha(request):
+    """return new capcha code
+    """
+    if request.method == 'POST':
+        cap = capcha.capcha()
+        name_capcha, code_capcha = cap.gen_capcha()
+        add_capcha_code(name_capcha, code_capcha)  
+        return HttpResponse(json.dumps({'img_name': name_capcha}))

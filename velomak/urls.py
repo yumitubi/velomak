@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import patterns, include, url
-from velomak.blog.views import blog, cur_post, cur_tag, cur_categ, cur_section, search
+from velomak.blog.views import blog, cur_post, cur_tag, cur_categ, cur_section, search, ajax_get_capcha
 from django.conf import settings
 from blog.feed import RSSFeed
 from django.contrib import admin
@@ -22,5 +22,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+
+    url(r'ajax/get_capcha/$', ajax_get_capcha),
 )
 
