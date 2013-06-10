@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-
-import os, shutil, datetime, time
+import os
+import time
+import shutil
+import datetime
+from django.db.models import Q
 from velomak.settings import DIR_CACHE, DIR_CAPCHA
 from velomak.blog.models import Posts, Tags, Category, Section, Comms, Capcha
-from django.db.models import Q
+
 
 def clear_cache(directory):
     """clear directory with cashe
@@ -19,6 +22,7 @@ def clear_cache(directory):
     else:
         return False
 
+
 def clear_capcha(directory, expire):
     """clear directory with capcha images"""
     now = datetime.datetime.now()
@@ -33,6 +37,7 @@ def clear_capcha(directory, expire):
             except:
                 pass
 
+
 def add_capcha_code(name_capcha, code_capcha):
     """ add communicate in database 
     between capcha image and capcha code
@@ -42,10 +47,12 @@ def add_capcha_code(name_capcha, code_capcha):
                                  use=False)
     add_capcha_database.save()
 
+
 def get_posts():
     """return posts
     """
     return Posts.objects.filter(not_publicate_main=0)
+
 
 def get_post(url_post):
     """return post
