@@ -1,2 +1,48 @@
-This is my first web-app on django. 
-GoodLuck me ;)
+VeloMak - mini blog on Django
+=============================
+
+**Velomak** is a mini-blog-web-application on Django.
+
+Current version Django - 1.5. 
+
+### Installing VeloMak ###
+
+1. Create virtualenv for new project:
+
+    virtualenv --system-site-packages ~/venv/
+
+2. Clone an app to ~/venv/velomak/
+
+    cd ~/venv/
+    git clone https://github.com/le087/velomak.git
+
+3. Activate virtualenv:
+
+    source ~/venv/bin/activate
+
+4. Install dependens to virtualenv using pip:
+
+    cd ~/venv/velomak/velomak
+    pip install -r requirements.pip
+
+5. Create a database and an user for blog in MySQL.
+
+6. Rename settings.py.example in settings.py and edit it in "DATABASE".
+
+7. Delete all files in "blog/migration". I fix it after.
+
+8. Create a file for counters:
+
+    touch templates/metrika.html
+
+8. Create the system tables in database using syncdb and South:
+
+    ./manage.py schemamigration blog --initial
+    ./manage.py syncdb
+    ./manage.py migrate blog
+
+9. Start it!
+
+    ./manage.py runserver
+
+
