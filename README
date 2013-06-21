@@ -35,13 +35,13 @@ Current version Django - 1.5.
 
     touch templates/metrika.html
 
-8. Create the system tables in database using syncdb and South:
+9. Create the system tables in database using syncdb and South:
 
     ./manage.py schemamigration blog --initial
     ./manage.py syncdb
     ./manage.py migrate blog
 
-9. Start it!
+10. Start it!
 
     ./manage.py runserver
 
