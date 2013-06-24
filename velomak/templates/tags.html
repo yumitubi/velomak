@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+{% load space_in_earth %}
+
+{% block js-script %}
+{% endblock %}
+
+{% block meta %}
+<meta name="keywords" content="le087 blog {% for m in  meta %}{{ m }} {% endfor %}">
+{% endblock %}
+
+{% block top_menu%}
+{% for i in section_posts %}
+{% if i.enabled %}
+<div class="item_menu">
+  <a href="/section/{{ i.section|inearth }}">{{ i.section }}</a>
+</div>
+{% endif%}
+{% endfor %}
+{% endblock %}
+
+{% block body %}
+<div>
+  <h3>Все теги</h3>
+</div>
+<div>
+  {% for i in tags_obr %}
+  <a href="/tags/{{ i|inearth }}">{{ i }}, </a>
+  {% endfor %}
+</div> 
+<p></p>
+<p><div id="cprg">© le087's blog 2011-2013</div></p>
+
+{% endblock%}
+
+
+

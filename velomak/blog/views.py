@@ -196,6 +196,22 @@ def search(request):
                               }, context_instance=RequestContext(request))
 
 
+def page_of_tags(request):
+    """return page of tags"""
+    
+    meta = "блог le087 tags tag list of tags"
+    current_page = "Все теги"
+    tags_obr = get_tags()
+    section_posts = get_sections()
+    return render_to_response('tags.html', {
+                              'current_page': current_page,
+                              'meta': meta,
+                              'tags_obr': tags_obr,
+                              'section_posts': section_posts,
+                              }, context_instance=RequestContext(request))
+
+
+    
 #------------------------------------------------------------
 # Ajax 
 #------------------------------------------------------------
