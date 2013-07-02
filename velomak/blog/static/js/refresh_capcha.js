@@ -1,4 +1,4 @@
-// отправляет ajax-запрос на сервер
+// refresh capcha
 
 $(document).ready(function (){
   $('#refresh_capcha').click(function(){

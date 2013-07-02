@@ -75,6 +75,18 @@ def get_tag_to_post(id_post):
         list_tags = []
     return list_tags
 
+
+def get_all_tags_heigh():
+    """return dict as -- 
+    {tag1: 2, tag2: 1, tag3: 5}
+    """
+    alltags = {}
+    tags = Tags.objects.all()
+    for i in tags:
+        pass
+    return alltags
+
+    
 def get_posts_categ(categ):
     """return posts fron id_categ
     Arguments:

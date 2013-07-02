@@ -8,6 +8,7 @@ from velomak.blog.utils import get_posts_tag, get_tag_to_post, get_post
 from velomak.blog.utils import get_posts_section, get_sections
 from velomak.blog.utils import save_comment, get_comments, add_capcha_code
 from velomak.blog.utils import search_in_db, get_categs_section
+from velomak.blog.utils import get_all_tags_heigh
 import json
 import capcha
 
@@ -224,3 +225,11 @@ def ajax_get_capcha(request):
         name_capcha, code_capcha = cap.gen_capcha()
         add_capcha_code(name_capcha, code_capcha)  
         return HttpResponse(json.dumps({'img_name': name_capcha}))
+
+
+def ajax_get_alltags(request):
+    """return all tags with heigh of every tags
+    """
+    if request.method == 'POST':
+        alltags = get_all_tags_heigh()
+        return HttpResponse(json.dumps(alltags))
