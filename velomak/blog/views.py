@@ -200,8 +200,8 @@ def search(request):
 def page_of_tags(request):
     """return page of tags"""
     
-    meta = "блог le087 tags tag list of tags"
-    current_page = "Все теги"
+    meta = u"блог le087 tags tag list of tags"
+    current_page = u"Все теги"
     tags_obr = get_tags()
     section_posts = get_sections()
     return render_to_response('tags.html', {
@@ -232,4 +232,7 @@ def ajax_get_alltags(request):
     """
     if request.method == 'POST':
         alltags = get_all_tags_heigh()
+        # alltags_u = {}
+        # for i in alltags.keys():
+        #     alltags_u[i.decode("utf-8")]=alltags[i]
         return HttpResponse(json.dumps(alltags))
