@@ -302,6 +302,26 @@ a:hover.tags {
     font-size: 0.9em;
 }
 
+.type2 {
+    font-size: 1.2em;
+}
+
+.type3 {
+    font-size: 1.5em;
+}
+
+.type4 {
+    font-size: 1.8em;
+}
+
+.type5 {
+    font-size: 2.1em;
+}
+
+.alltags {
+    text-align: center;
+}
+
 #cprg {
     text-align: center;
     font-family: "Georgia", "Times", serif;

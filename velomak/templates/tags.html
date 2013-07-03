@@ -2,6 +2,9 @@
 {% load space_in_earth %}
 
 {% block js-script %}
+<script type="text/javascript" src="/static/js/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="/static/js/settings.js"></script>
+<script type="text/javascript" src="/static/js/alltags.js"></script>
 {% endblock %}
 
 {% block meta %}
@@ -21,12 +24,8 @@
 {% block body %}
 <div>
   <h3>Все теги</h3>
+<div class="alltags">
 </div>
-<div>
-  {% for i in tags_obr %}
-  <a href="/tags/{{ i|inearth }}">{{ i }}, </a>
-  {% endfor %}
-</div> 
 <p></p>
 <p><div id="cprg">© le087's blog 2011-2013</div></p>
 

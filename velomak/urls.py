@@ -2,6 +2,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from velomak.blog.views import blog, cur_post, cur_tag, cur_categ, cur_section, search, ajax_get_capcha
 from velomak.blog.views import page_of_tags
+from velomak.blog.views import ajax_get_alltags
 from django.conf import settings
 from blog.feed import RSSFeed
 from django.contrib import admin
@@ -26,5 +27,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
     url(r'ajax/get_capcha/$', ajax_get_capcha),
+    url(r'ajax/get_alltags/$', ajax_get_alltags),
 )
 
