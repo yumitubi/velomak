@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import os, shutil, datetime, time
+import math
 from velomak.settings import DIR_CACHE, DIR_CAPCHA
 from velomak.blog.models import Posts, Tags, Category, Section, Comms, Capcha
-from django.db.models import Q
+from django.db.models import Q, Count
 
 def clear_cache(directory): 
     """clear directory with cashe
@@ -82,32 +83,16 @@ def get_all_tags_heigh():
     {tag1: 2, tag2: 1, tag3: 5}
     
     """
-    alltags = {}
-    tags_of_posts = {}
-    tags = Tags.objects.all()
-    posts = Posts.objects.all()
-    for i in tags:
-        alltags[i.tag] = 0
-    for i in posts:
-        list_tags = [t.tag for t in i.tags.all()]
-        tags_of_posts[i.id] = list_tags
-    for i in tags:
-        for p in posts:
-            if i.tag in tags_of_posts[p.id]:
-                alltags[i.tag] += 1
-    maximum = max(alltags.values())
-    for k in alltags.keys():
-        if maximum !=0:
-            rezult = alltags[k]/maximum
-            if rezult < 0.3:
-                alltags[k] = 2
-            elif rezult < 0.5 and rezult >= 0.3:
-                alltags[k] = 3
-            elif rezult < 0.7 and rezult >= 0.5:
-                alltags[k] = 4
-            else:
-                alltags[k] = 5
-    return alltags
+    # считаем, как количество тагов встречается
+    alltags = Tags.objects.annotate(num=Count('posts'))
+    # формируем словарь, упорядочиваем веса
+    dict_heigh = dict([i.tag, i.num] for i in alltags)
+    maximum = max(dict_heigh.values())
+    print dict_heigh
+    if maximum != 0:
+        for key in dict_heigh.keys():
+            dict_heigh[key] = math.ceil((dict_heigh[key]/float(maximum))*10)
+    return dict_heigh
 
 def get_posts_categ(categ):
     """return posts fron id_categ

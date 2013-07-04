@@ -302,20 +302,44 @@ a:hover.tags {
     font-size: 0.9em;
 }
 
+.type1 {
+    font-size: 1.1em;
+}
+
 .type2 {
     font-size: 1.2em;
 }
 
 .type3 {
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .type4 {
-    font-size: 1.8em;
+    font-size: 1.4em;
 }
 
 .type5 {
-    font-size: 2.1em;
+    font-size: 1.5em;
+}
+
+.type6 {
+    font-size: 1.6em;
+}
+
+.type7 {
+    font-size: 1.7em;
+}
+
+.type8 {
+    font-size: 1.8em;
+}
+
+.type9 {
+    font-size: 1.9em;
+}
+
+.type10 {
+    font-size: 2.0em;
 }
 
 .alltags {
