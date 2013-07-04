@@ -88,7 +88,6 @@ def get_all_tags_heigh():
     # формируем словарь, упорядочиваем веса
     dict_heigh = dict([i.tag, i.num] for i in alltags)
     maximum = max(dict_heigh.values())
-    print dict_heigh
     if maximum != 0:
         for key in dict_heigh.keys():
             dict_heigh[key] = math.ceil((dict_heigh[key]/float(maximum))*10)
