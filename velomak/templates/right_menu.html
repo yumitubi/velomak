@@ -9,7 +9,7 @@
 {% endfor %}
 <br />
 <div>
-  <div id="tags_right">Облако тегов:</div>
+  <div id="tags_right"><a href="/alltags/">Облако тегов:</a></div>
   <div class="tag_right">{% for i in cloud_tags %}
     <a href="/tags/{{ i|inearth }}">{{ i }}</a>
   {% endfor %}</div>
