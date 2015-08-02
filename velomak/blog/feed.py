@@ -4,6 +4,7 @@ from django.contrib.syndication.views import Feed
 from velomak.blog.models import Posts
 from django.utils.feedgenerator import Rss201rev2Feed
 
+
 class RSSFeed(Feed):
     feed_type = Rss201rev2Feed
     title = 'le087\'s blog'
@@ -12,8 +13,11 @@ class RSSFeed(Feed):
     item_author_name = 'le087'
 
     def items(self):
-        return Posts.objects.filter(not_publicate_main=0, flag_enabled=1).order_by('-date_pub')[:5]
-    
+        return Posts.objects.filter(
+            not_publicate_main=0,
+            flag_enabled=1
+        ).order_by('-date_pub')[:5]
+
     def item_description(self, post):
         return post.prepost
 

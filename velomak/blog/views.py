@@ -199,7 +199,7 @@ def search(request):
 
 def page_of_tags(request):
     """return page of tags"""
-    
+
     meta = u"блог le087 tags tag list of tags"
     current_page = u"Все теги"
     tags_obr = get_tags()
@@ -212,9 +212,9 @@ def page_of_tags(request):
                               }, context_instance=RequestContext(request))
 
 
-    
+
 #------------------------------------------------------------
-# Ajax 
+# Ajax
 #------------------------------------------------------------
 
 def ajax_get_capcha(request):
@@ -223,7 +223,7 @@ def ajax_get_capcha(request):
     if request.method == 'POST':
         cap = capcha.capcha()
         name_capcha, code_capcha = cap.gen_capcha()
-        add_capcha_code(name_capcha, code_capcha)  
+        add_capcha_code(name_capcha, code_capcha)
         return HttpResponse(json.dumps({'img_name': name_capcha}))
 
 
